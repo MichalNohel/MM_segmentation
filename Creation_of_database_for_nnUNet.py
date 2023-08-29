@@ -22,8 +22,7 @@ if __name__ == "__main__":
     task_id = 701
     task_name = "MM_lession_segmentation_model_01_konvCT"
     
-    foldername = "Dataset%03.0d_%s" % (task_id, task_name)
-    
+    foldername = "Dataset%03.0d_%s" % (task_id, task_name)    
     out_base = join('E://Znaceni_dat/nnUNet_MAIN_lesions/nnUNet_raw', foldername)  
     maybe_mkdir_p(out_base)
     
@@ -38,37 +37,36 @@ if __name__ == "__main__":
     
     ### Pouze convCT a maska obratlů
     
-    for t in subdirs(base, join=False):
-        #imagestr složka        
-        train_patient_names_here = [i[:-len(".nii.gz")] for i in
-                                    subfiles(join(base, t, 'ConvCT_data_nifti'), join=False, suffix=".nii.gz")]
-        train_patient_names_here=train_patient_names_here[0]
+    for t in subdirs(base, join=False): 
+        #imagestr - složka s trénovacími daty  
+        #konvenční CT
+        train_patient_names=subfiles(join(base, t, 'ConvCT_data_nifti'), join=False, suffix=".nii.gz")[0]
         curr = join(base, t, 'ConvCT_data_nifti')
-        image_file = join(curr, train_patient_names_here + ".nii.gz")
-        shutil.copy(image_file, join(imagestr, train_patient_names_here + "_0000.nii.gz"))
+        image_file = join(curr, train_patient_names)
+        shutil.copy(image_file, join(imagestr, t + "_0000.nii.gz"))
         
-        train_lesions_names = [i[:-len(".nii.gz")] for i in
-                                    subfiles(join(base, t, 'Spine_labels/NN_Unet'), join=False, suffix="spine.nii.gz")]
-    
-        train_lesions_names=train_lesions_names[0]
-        curr = join(base, t, 'Spine_labels/NN_Unet')
-        image_file = join(curr, train_lesions_names + ".nii.gz")
+        #Vysegmentovaná páteř        
+        train_spine_segm = subfiles(join(base, t, 'Spine_labels/NN_Unet'), join=False, suffix="spine.nii.gz")[0]    
+        curr = join(base, t, 'Spine_labels/NN_Unet')        
+        image_file = join(curr, train_spine_segm)
         img = nib.load(image_file)
         data=img.get_fdata()
-        data=data.astype(bool)
-        
-              
-        # maska obratlu nnUNet binarne
+        data=data.astype(bool) # maska obratlu nnUNet binarne    
         pom_seg_nn_unet_binar = nib.Nifti1Image(data, img.affine, img.header)
-        nib.save(pom_seg_nn_unet_binar, join(imagestr, train_patient_names_here + "_0001.nii.gz"))
+        nib.save(pom_seg_nn_unet_binar, join(imagestr, t + "_0001.nii.gz")) 
         
-        train_lesions_names = [i[:-len(".nii.gz")] for i in
-                                    subfiles(join(base, t, 'Lesion_labels'), join=False, suffix=".nii.gz")]
-    
-        train_lesions_names=train_lesions_names[0]
+        #VMI 40keV
+        vmi_40kev=subfiles(join(base, t, 'VMI_data_nifti'), join=False, suffix="40kev.nii.gz")[0] 
+        curr = join(base, t, 'VMI_data_nifti')
+        image_file = join(curr, vmi_40kev)
+        shutil.copy(image_file, join(imagestr, t + "_0002.nii.gz"))
+        
+        
+        #labelstr - složka s anotacemi lézí
+        train_lesions_names = subfiles(join(base, t, 'Lesion_labels'), join=False, suffix=".nii.gz")[0]    
         curr = join(base, t, 'Lesion_labels')
-        image_file = join(curr, train_lesions_names + ".nii.gz")
-        shutil.copy(image_file, join(labelstr, train_patient_names_here + ".nii.gz"))
+        image_file = join(curr, train_lesions_names)
+        shutil.copy(image_file, join(labelstr, t + ".nii.gz"))
         
         num_training_cases += 1
 
