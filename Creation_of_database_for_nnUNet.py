@@ -55,12 +55,13 @@ if __name__ == "__main__":
         pom_seg_nn_unet_binar = nib.Nifti1Image(data, img.affine, img.header)
         nib.save(pom_seg_nn_unet_binar, join(imagestr, t + "_0001.nii.gz")) 
         
+        '''
         #VMI 40keV
         vmi_40kev=subfiles(join(base, t, 'VMI_data_nifti'), join=False, suffix="40kev.nii.gz")[0] 
         curr = join(base, t, 'VMI_data_nifti')
         image_file = join(curr, vmi_40kev)
         shutil.copy(image_file, join(imagestr, t + "_0002.nii.gz"))
-        
+        '''
         
         #labelstr - složka s anotacemi lézí
         train_lesions_names = subfiles(join(base, t, 'Lesion_labels'), join=False, suffix=".nii.gz")[0]    
@@ -69,7 +70,7 @@ if __name__ == "__main__":
         shutil.copy(image_file, join(labelstr, t + ".nii.gz"))
         
         num_training_cases += 1
-
+    #%%
     generate_dataset_json(output_folder=out_base,
                           channel_names={0: "konvCT",1: "mask_spine", },
                           labels={"background": 0,"Lesion": 1,},

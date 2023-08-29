@@ -1,0 +1,5 @@
+Pro všechny modely přidány binární segmentace z nnUNetu
+
+task ID 701 - MM_lession_segmentation_model_01_konvCT - Pouze konvenční CT data
+	0000 - CTkonv data
+	0001 - binární segmentace páteře
