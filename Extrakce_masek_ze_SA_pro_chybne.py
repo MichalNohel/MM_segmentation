@@ -8,6 +8,7 @@ from scipy.io import loadmat
 import numpy as np
 import nibabel as nib
 
+
 #%% Myel_004 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
 pacient='004';
 pacient_ID='S2470';
@@ -36,6 +37,15 @@ nib.save(pom_Leze_Spine_analyzer_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'
 #%% maska obratlu nnUNet
 pom_seg_nn_unet_final = nib.Nifti1Image(seg_nn_unet_final, img.affine, img.header)
 nib.save(pom_seg_nn_unet_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Spine_labels/NN_Unet/nnUNet_20397_myel_' + pacient +'_spine.nii.gz')
+
+#%% Vytvoření semantické segmentace lézí z nnUNetu
+leze_nnUNet = loadmat('E:\Znaceni_dat\Data\Myel_'+pacient+'\Lesion_labels\Myel_' + pacient +'_lesions_nnUNet_semantic.mat')
+leze_nnUNet=leze_nnUNet.get('L')
+pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
+nib.save(pom_leze_nnUNet, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_nnUNet_semantic.nii.gz')
+#%%%%
+
+
 
 
 
@@ -68,6 +78,12 @@ nib.save(pom_Leze_Spine_analyzer_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'
 #%% maska obratlu nnUNet
 pom_seg_nn_unet_final = nib.Nifti1Image(seg_nn_unet_final, img.affine, img.header)
 nib.save(pom_seg_nn_unet_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Spine_labels/NN_Unet/nnUNet_20132_myel_' + pacient +'_spine.nii.gz')
+
+#%% Vytvoření semantické segmentace lézí z nnUNetu
+leze_nnUNet = loadmat('E:\Znaceni_dat\Data\Myel_'+pacient+'\Lesion_labels\Myel_' + pacient +'_lesions_nnUNet_semantic.mat')
+leze_nnUNet=leze_nnUNet.get('L')
+pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
+nib.save(pom_leze_nnUNet, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_nnUNet_semantic.nii.gz')
 
 
 
