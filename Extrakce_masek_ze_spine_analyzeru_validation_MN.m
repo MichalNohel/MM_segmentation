@@ -18,7 +18,7 @@ OutputSA=load(['E:\ISP_Myelomy_export\' pacient_ID '\' Conv_sken '\Results\' Con
 segmentace=OutputSA.Data.orig3DroiSeg;
 pozice=OutputSA.Data.positions_orig;
 orig_rozmery=OutputSA.info.size_orig;
-clear OutputSA;
+% clear OutputSA;
 %% Info pro vytvoření Nifti
 %info=niftiinfo(['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\20764_myel_' pacient '_konv_seg_modified.nii.gz']);
 info=niftiinfo(['E:\Znaceni_dat\Data\Myel_' pacient '\ConvCT_data_nifti\20764_myel_' pacient '_konv.nii.gz']);
@@ -426,7 +426,6 @@ seg_nn_unet_final=uint8(imrotate3(seg_nn_unet_rot,-90,[0 0 1],"nearest",'crop'))
 save("E:\Znaceni_dat\Data\Myel_010\Spine_labels\Spine_analyzer\maska_Spine_analyzer_final.mat","maska_Spine_analyzer_final")
 save("E:\Znaceni_dat\Data\Myel_010\Spine_labels\Spine_analyzer\Leze_Spine_analyzer_final.mat","Leze_Spine_analyzer_final")
 save("E:\Znaceni_dat\Data\Myel_010\Spine_labels\NN_unet\seg_nn_unet_final.mat","seg_nn_unet_final")
-
 %% 
 
 
@@ -617,7 +616,7 @@ pozice=OutputSA.Data.positions_orig;
 orig_rozmery=OutputSA.info.size_orig;
 clear OutputSA;
 %% Info pro vytvoření Nifti
-info=niftiinfo(['E:\Znaceni_dat\Data\Healthy_' pacient '\ConvCT_data_nifti\20297_healthy_' pacient '_konv.nii.gz']);
+info=niftiinfo(['E:\Znaceni_dat\Data\Healthy_' pacient '\ConvCT_data_nifti\healthy_' pacient '_konv.nii.gz']);
 info.Description = 'Modified using MATLAB R2022b';
 info.Datatype = 'uint8';
 info.BitsPerPixel = '8';
@@ -826,7 +825,7 @@ pozice=OutputSA.Data.positions_orig;
 orig_rozmery=OutputSA.info.size_orig;
 clear OutputSA;
 %% Info pro vytvoření Nifti
-info=niftiinfo(['E:\Znaceni_dat\Data\Healthy_' pacient '\ConvCT_data_nifti\20393_healthy_' pacient '_konv.nii.gz']);
+info=niftiinfo(['E:\Znaceni_dat\Data\Healthy_' pacient '\ConvCT_data_nifti\healthy_' pacient '_konv.nii.gz']);
 info.Description = 'Modified using MATLAB R2022b';
 info.Datatype = 'uint8';
 info.BitsPerPixel = '8';

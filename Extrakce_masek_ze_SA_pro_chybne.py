@@ -36,7 +36,7 @@ nib.save(pom_Leze_Spine_analyzer_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'
 
 #%% maska obratlu nnUNet
 pom_seg_nn_unet_final = nib.Nifti1Image(seg_nn_unet_final, img.affine, img.header)
-nib.save(pom_seg_nn_unet_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Spine_labels/NN_Unet/nnUNet_20397_myel_' + pacient +'_spine.nii.gz')
+nib.save(pom_seg_nn_unet_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Spine_labels/NN_Unet/myel_' + pacient +'_spine_seg_nnUNet.nii.gz')
 
 #%% Vytvoření semantické segmentace lézí z nnUNetu
 leze_nnUNet = loadmat('E:\Znaceni_dat\Data\Myel_'+pacient+'\Lesion_labels\Myel_' + pacient +'_lesions_nnUNet_semantic.mat')
@@ -77,7 +77,7 @@ nib.save(pom_Leze_Spine_analyzer_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'
 
 #%% maska obratlu nnUNet
 pom_seg_nn_unet_final = nib.Nifti1Image(seg_nn_unet_final, img.affine, img.header)
-nib.save(pom_seg_nn_unet_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Spine_labels/NN_Unet/nnUNet_20132_myel_' + pacient +'_spine.nii.gz')
+nib.save(pom_seg_nn_unet_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Spine_labels/NN_Unet/myel_' + pacient +'_spine_seg_nnUNet.nii.gz')
 
 #%% Vytvoření semantické segmentace lézí z nnUNetu
 leze_nnUNet = loadmat('E:\Znaceni_dat\Data\Myel_'+pacient+'\Lesion_labels\Myel_' + pacient +'_lesions_nnUNet_semantic.mat')
@@ -105,7 +105,7 @@ maska_Spine_analyzer_final=maska_Spine_analyzer_final.get('maska_Spine_analyzer_
 seg_nn_unet_final=loadmat('E:\Znaceni_dat\Data\Healthy_'+pacient+'\Spine_labels/NN_unet/seg_nn_unet_final.mat')
 seg_nn_unet_final=seg_nn_unet_final.get('seg_nn_unet_final')
 #%%
-img = nib.load('E:\Znaceni_dat\Data\Healthy_' + pacient +'\Spine_labels\Payer\Payer_20297_healthy_' + pacient +'_spine.nii.gz')
+img = nib.load('E:\Znaceni_dat\Data\Healthy_' + pacient +'\Spine_labels\Payer\healthy_' + pacient +'_spine_seg_Payer.nii.gz')
 
 #%% maska obratlu
 pom_maska_Spine_analyzer_final = nib.Nifti1Image(maska_Spine_analyzer_final, img.affine, img.header)
@@ -117,7 +117,7 @@ nib.save(pom_Leze_Spine_analyzer_final, 'E:\Znaceni_dat\Data\Healthy_' + pacient
 
 #%% maska obratlu nnUNet
 pom_seg_nn_unet_final = nib.Nifti1Image(seg_nn_unet_final, img.affine, img.header)
-nib.save(pom_seg_nn_unet_final, 'E:\Znaceni_dat\Data\Healthy_' + pacient +'\Spine_labels/NN_Unet/nnUNet_20297_healthy_' + pacient +'_spine.nii.gz')
+nib.save(pom_seg_nn_unet_final, 'E:\Znaceni_dat\Data\Healthy_' + pacient +'\Spine_labels/NN_Unet/healthy_' + pacient +'_spine_seg_nnUNet.nii.gz')
 
 
 #%% Healthy_010 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
@@ -149,6 +149,6 @@ nib.save(pom_Leze_Spine_analyzer_final, 'E:\Znaceni_dat\Data\Healthy_' + pacient
 
 #%% maska obratlu nnUNet
 pom_seg_nn_unet_final = nib.Nifti1Image(seg_nn_unet_final, img.affine, img.header)
-nib.save(pom_seg_nn_unet_final, 'E:\Znaceni_dat\Data\Healthy_' + pacient +'\Spine_labels/NN_Unet/nnUNet_20393_healthy_' + pacient +'_spine.nii.gz')
+nib.save(pom_seg_nn_unet_final, 'E:\Znaceni_dat\Data\Healthy_' + pacient +'\Spine_labels/NN_Unet/healthy_' + pacient +'_spine_seg_nnUNet.nii.gz')
 
 

@@ -5,20 +5,19 @@ addpath Functions
 
 %% Myel_001
 pacient='001';
-Conv_sken_ID='20764';
 path_to_orig_data=['E:\Znaceni_dat\Data\Myel_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\myel_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\myel_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\myel_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -28,7 +27,7 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA.nii.gz'];
+path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 seg_lesions=imrotate3(seg_lesions,90,[0 0 1],"nearest","loose");
 %%
@@ -41,20 +40,19 @@ clear all
 close all
 clc
 pacient='002';
-Conv_sken_ID='20414';
 path_to_orig_data=['E:\Znaceni_dat\Data\Myel_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\myel_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\myel_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\myel_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -64,7 +62,7 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA.nii.gz'];
+path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 seg_lesions=imrotate3(seg_lesions,90,[0 0 1],"nearest","loose");
 %%
@@ -74,20 +72,19 @@ clear all
 close all
 clc
 pacient='003';
-Conv_sken_ID='20434';
 path_to_orig_data=['E:\Znaceni_dat\Data\Myel_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\myel_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\myel_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\myel_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -97,7 +94,7 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA.nii.gz'];
+path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 seg_lesions=imrotate3(seg_lesions,90,[0 0 1],"nearest","loose");
 %%
@@ -107,20 +104,19 @@ clear all
 close all
 clc
 pacient='004';
-Conv_sken_ID='20397';
 path_to_orig_data=['E:\Znaceni_dat\Data\Myel_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\myel_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\myel_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\myel_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -130,7 +126,7 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA.nii.gz'];
+path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 seg_lesions=imrotate3(seg_lesions,90,[0 0 1],"nearest","loose");
 %%
@@ -140,20 +136,19 @@ clear all
 close all
 clc
 pacient='005';
-Conv_sken_ID='20491';
 path_to_orig_data=['E:\Znaceni_dat\Data\Myel_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\myel_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\myel_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\myel_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -163,7 +158,7 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA.nii.gz'];
+path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 seg_lesions=imrotate3(seg_lesions,90,[0 0 1],"nearest","loose");
 %%
@@ -174,20 +169,19 @@ clear all
 close all
 clc
 pacient='006';
-Conv_sken_ID='20419';
 path_to_orig_data=['E:\Znaceni_dat\Data\Myel_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\myel_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\myel_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\myel_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -197,7 +191,7 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA.nii.gz'];
+path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 seg_lesions=imrotate3(seg_lesions,90,[0 0 1],"nearest","loose");
 %%
@@ -208,20 +202,19 @@ clear all
 close all
 clc
 pacient='007';
-Conv_sken_ID='2010';
 path_to_orig_data=['E:\Znaceni_dat\Data\Myel_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\myel_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\myel_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\myel_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -231,7 +224,7 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA.nii.gz'];
+path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 seg_lesions=imrotate3(seg_lesions,90,[0 0 1],"nearest","loose");
 %%
@@ -242,20 +235,19 @@ clear all
 close all
 clc
 pacient='008';
-Conv_sken_ID='20414';
 path_to_orig_data=['E:\Znaceni_dat\Data\Myel_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\myel_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\myel_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\myel_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -265,7 +257,7 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA.nii.gz'];
+path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 seg_lesions=imrotate3(seg_lesions,90,[0 0 1],"nearest","loose");
 %%
@@ -276,20 +268,19 @@ clear all
 close all
 clc
 pacient='009';
-Conv_sken_ID='20357';
 path_to_orig_data=['E:\Znaceni_dat\Data\Myel_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\myel_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\myel_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\myel_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -299,7 +290,7 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA.nii.gz'];
+path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 seg_lesions=imrotate3(seg_lesions,90,[0 0 1],"nearest","loose");
 %%
@@ -310,20 +301,19 @@ clear all
 close all
 clc
 pacient='010';
-Conv_sken_ID='20132';
 path_to_orig_data=['E:\Znaceni_dat\Data\Myel_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Payer\myel_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\NN_unet\myel_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_myel_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Myel_' pacient '\Spine_labels\Spine_analyzer\myel_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -333,7 +323,7 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA.nii.gz'];
+path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 seg_lesions=imrotate3(seg_lesions,90,[0 0 1],"nearest","loose");
 %%
@@ -356,20 +346,19 @@ clear all
 close all
 clc
 pacient='001';
-Conv_sken_ID='20298';
 path_to_orig_data=['E:\Znaceni_dat\Data\Healthy_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\healthy_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\healthy_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\healthy_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -390,20 +379,19 @@ clear all
 close all
 clc
 pacient='002';
-Conv_sken_ID='20212';
 path_to_orig_data=['E:\Znaceni_dat\Data\Healthy_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\healthy_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\healthy_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\healthy_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -424,20 +412,19 @@ clear all
 close all
 clc
 pacient='003';
-Conv_sken_ID='20277';
 path_to_orig_data=['E:\Znaceni_dat\Data\Healthy_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\healthy_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\healthy_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\healthy_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -458,20 +445,19 @@ clear all
 close all
 clc
 pacient='004';
-Conv_sken_ID='20257';
 path_to_orig_data=['E:\Znaceni_dat\Data\Healthy_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\healthy_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\healthy_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\healthy_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -492,20 +478,19 @@ clear all
 close all
 clc
 pacient='005';
-Conv_sken_ID='20297';
 path_to_orig_data=['E:\Znaceni_dat\Data\Healthy_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\healthy_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\healthy_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\healthy_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -526,20 +511,19 @@ clear all
 close all
 clc
 pacient='006';
-Conv_sken_ID='20279';
 path_to_orig_data=['E:\Znaceni_dat\Data\Healthy_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\healthy_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\healthy_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\healthy_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -560,20 +544,19 @@ clear all
 close all
 clc
 pacient='007';
-Conv_sken_ID='20363';
 path_to_orig_data=['E:\Znaceni_dat\Data\Healthy_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\healthy_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\healthy_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\healthy_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -594,20 +577,19 @@ clear all
 close all
 clc
 pacient='008';
-Conv_sken_ID='20426';
 path_to_orig_data=['E:\Znaceni_dat\Data\Healthy_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\healthy_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\healthy_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\healthy_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -629,20 +611,19 @@ clear all
 close all
 clc
 pacient='009';
-Conv_sken_ID='20277';
 path_to_orig_data=['E:\Znaceni_dat\Data\Healthy_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\healthy_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\healthy_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\healthy_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
@@ -663,20 +644,19 @@ clear all
 close all
 clc
 pacient='010';
-Conv_sken_ID='20393';
 path_to_orig_data=['E:\Znaceni_dat\Data\Healthy_' pacient '\ConvCT_data_dicom\']
 collection = dicomCollection(path_to_orig_data)
 data=squeeze(dicomreadVolume(collection,'s1'));
 %%
-path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\Payer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_Payer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Payer\healthy_' pacient '_spine_seg_Payer.nii.gz'];
 seg_payer=niftiread(path_to_Payer_seg);
 seg_payer=imrotate3(seg_payer,90,[0 0 1],"nearest","loose");
 %%
-path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\nnUNet_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_nn_unet_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\NN_unet\healthy_' pacient '_spine_seg_nnUNet.nii.gz'];
 seg_nn_unet=niftiread(path_to_nn_unet_seg);
 seg_nn_unet=imrotate3(seg_nn_unet,90,[0 0 1],"nearest","loose");
 %%
-path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\Spine_analyzer_' Conv_sken_ID '_healthy_' pacient '_spine.nii.gz'];
+path_to_spine_analyzer_seg=['E:\Znaceni_dat\Data\Healthy_' pacient '\Spine_labels\Spine_analyzer\healthy_' pacient '_spine_seg_SA.nii.gz'];
 seg_spine_analyzer=niftiread(path_to_spine_analyzer_seg);
 seg_spine_analyzer=imrotate3(seg_spine_analyzer,90,[0 0 1],"nearest","loose");
 %%
