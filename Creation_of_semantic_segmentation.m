@@ -42,7 +42,6 @@ create_semantic_segmentation(pacient,uloz_nifti)
 pacient='010';
 uloz_nifti=0;
 create_semantic_segmentation(pacient,uloz_nifti)
-
 %% Myel_011
 pacient='011';
 uloz_nifti=1;
