@@ -104,6 +104,96 @@ patient='020';
 Conv_sken='S204850';
 save_nifti=1;
 extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_021 problém převodu dicom2nifti - uložení mat file a přeuložení v pythonu. oprava masky nnUNet
+patient='021';
+Conv_sken='S204850';
+save_nifti=0;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_022
+patient='022';
+Conv_sken='S205540';
+save_nifti=1;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_023
+patient='023';
+Conv_sken='S204560';
+save_nifti=1;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_024 problém převodu dicom2nifti - uložení mat file a přeuložení v pythonu. oprava masky nnUNet
+patient='024';
+Conv_sken='S204960';
+save_nifti=0;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_025
+patient='025';
+Conv_sken='S203110';
+save_nifti=1;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_026
+patient='026';
+Conv_sken='S204380';
+save_nifti=1;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_027
+patient='027';
+Conv_sken='S204200';
+save_nifti=1;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_028
+patient='028';
+Conv_sken='S204510';
+save_nifti=1;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_029 problém převodu dicom2nifti - uložení mat file a přeuložení v pythonu. oprava masky nnUNet
+patient='029';
+Conv_sken='S207680';
+save_nifti=0;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_030
+patient='030';
+Conv_sken='S208900';
+save_nifti=1;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_031 problém převodu dicom2nifti - uložení mat file a přeuložení v pythonu. oprava masky nnUNet
+patient='031';
+Conv_sken='S203500';
+save_nifti=0;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_033
+patient='033';
+Conv_sken='S204260';
+save_nifti=1;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_034
+patient='034';
+Conv_sken='S204740';
+save_nifti=1;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_036
+patient='036';
+Conv_sken='S20420';
+save_nifti=1;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_038
+patient='038';
+Conv_sken='S203190';
+save_nifti=1;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_039
+patient='039';
+Conv_sken='S20380';
+save_nifti=1;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+%% Myel_040
+patient='040';
+Conv_sken='S20320';
+save_nifti=1;
+extract_masks_from_SA(path_to_database,path_to_SA_results,patient,Conv_sken,save_nifti,version_of_SA);
+
+
+
+
+
 
 
 

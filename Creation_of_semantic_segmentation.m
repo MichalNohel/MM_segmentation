@@ -80,9 +80,73 @@ create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUN
 patient='020';
 save_nifti=1;
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
-
-
-
-
+%% Myel_021 Problem s ulozenim nifti - v pythonu uděláno uložení
+patient='021';
+save_nifti=0;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_022 
+patient='022';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_023 
+patient='023';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_024 Problem s ulozenim nifti - v pythonu uděláno uložení
+patient='024';
+save_nifti=0;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_025 
+patient='025';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_026 
+patient='026';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_027 
+patient='027';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_028 
+patient='028';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_029 Problem s ulozenim nifti - v pythonu uděláno uložení
+patient='029';
+save_nifti=0;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_030 
+patient='030';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_031 Problem s ulozenim nifti - v pythonu uděláno uložení
+patient='031';
+save_nifti=0;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_033 
+patient='033';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_034 
+patient='034';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_036 
+patient='036';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_038
+patient='038';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_039 
+patient='039';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_040
+patient='040';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 
 
