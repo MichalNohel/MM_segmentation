@@ -1,12 +1,10 @@
-function []=create_semantic_segmentation(pacient,uloz_nifti)
+function []=create_semantic_segmentation(path_to_database,patient,save_nifti, version_of_nnUNet)
 % Orig data
-% path_to_orig_data=['E:\Znaceni_dat\Data\Myel_' pacient '\ConvCT_data_nifti\myel_' pacient '_konv.nii.gz'];
-path_to_orig_data=['E:\Znaceni_dat\Data_pom\Myel_' pacient '\ConvCT_data_nifti\myel_' pacient '_konv.nii.gz'];
+path_to_orig_data=[path_to_database '\Myel_' patient '\ConvCT_data_nifti\myel_' patient '_konv.nii.gz'];
 
 data=niftiread(path_to_orig_data);
 % Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_seg_nnUNet_v_1_0.nii.gz'];
-path_to_lesions=['E:\Znaceni_dat\Data_pom\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_seg_nnUNet_v_1_0.nii.gz'];
+path_to_lesions=[path_to_database '\Myel_' patient '\Lesion_labels\Myel_' patient '_lesions_seg_nnUNet_' version_of_nnUNet '.nii.gz'];
 
 seg_lesions=niftiread(path_to_lesions);
 L = bwlabeln(seg_lesions);
@@ -14,10 +12,8 @@ L(L>0)=L(L>0)+1000;
 imfuse5(data, L)
 info=niftiinfo(path_to_lesions);
 info.Datatype = 'double';
-if (uloz_nifti==1)
-%     niftiwrite(L,['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_seg_nnUNet_v_1_0_semantic'],info,Compressed=true);
-    niftiwrite(L,['E:\Znaceni_dat\Data_pom\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_seg_nnUNet_v_1_0_semantic'],info,Compressed=true);
+if (save_nifti==1)
+    niftiwrite(L,[path_to_database '\Myel_' patient '\Lesion_labels\Myel_' patient '_lesions_seg_nnUNet_' version_of_nnUNet '_semantic'],info,Compressed=true);
 else
-%     save(['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_seg_nnUNet_v_1_0_semantic.mat'],'L')
-    save(['E:\Znaceni_dat\Data_pom\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_seg_nnUNet_v_1_0_semantic.mat'],'L')
+    save([path_to_database '\Myel_' patient '\TMP\Myel_' patient '_lesions_seg_nnUNet_' version_of_nnUNet '_semantic.mat'],'L')
 end

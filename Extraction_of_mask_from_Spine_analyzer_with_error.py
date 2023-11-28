@@ -11,38 +11,39 @@ import nibabel as nib
 
 #%% Myel_004 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
 pacient='004';
-pacient_ID='S2470';
 Conv_sken='S203970';
+path_to_database='E:\Znaceni_dat\Data';
+version_of_nnUNet='v_1_0';
+version_of_SA='v_4_3';
 #%%
-Leze_Spine_analyzer_final=loadmat('E:\Znaceni_dat\Data\Myel_'+pacient+'\Spine_labels\Spine_analyzer/Leze_Spine_analyzer_final.mat')
-Leze_Spine_analyzer_final=Leze_Spine_analyzer_final.get('Leze_Spine_analyzer_final')
+Spine_mask_Spine_analyzer_final=loadmat( path_to_database + '\Myel_'+pacient+'\TMP/Spine_mask_Spine_analyzer_final.mat')
+Spine_mask_Spine_analyzer_final=Spine_mask_Spine_analyzer_final.get('Spine_mask_Spine_analyzer_final')
 
-maska_Spine_analyzer_final=loadmat('E:\Znaceni_dat\Data\Myel_'+pacient+'\Spine_labels\Spine_analyzer/maska_Spine_analyzer_final.mat')
-maska_Spine_analyzer_final=maska_Spine_analyzer_final.get('maska_Spine_analyzer_final')
+Lesion_mask_Spine_analyzer_final=loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Lesion_mask_Spine_analyzer_final.mat')
+Lesion_mask_Spine_analyzer_final=Lesion_mask_Spine_analyzer_final.get('Lesion_mask_Spine_analyzer_final')
 
-seg_nn_unet_final=loadmat('E:\Znaceni_dat\Data\Myel_'+pacient+'\Spine_labels/NN_unet/seg_nn_unet_final.mat')
+seg_nn_unet_final=loadmat(path_to_database + '\Myel_'+pacient+'\TMP/seg_nn_unet_final.mat')
 seg_nn_unet_final=seg_nn_unet_final.get('seg_nn_unet_final')
-
 #%%
-img = nib.load('E:\Znaceni_dat\Data\Myel_' + pacient +'\Spine_labels\Payer\Payer_20397_myel_' + pacient +'_spine.nii.gz')
+img = nib.load(path_to_database + '\Myel_' + pacient +'\Spine_labels\Payer\myel_' + pacient +'_spine_seg_Payer.nii.gz')
 
 #%% maska obratlu SA
-pom_maska_Spine_analyzer_final = nib.Nifti1Image(maska_Spine_analyzer_final, img.affine, img.header)
-nib.save(pom_maska_Spine_analyzer_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Spine_labels\Spine_analyzer\Spine_analyzer_20397_myel_' + pacient +'_spine.nii.gz')
+TMP_Spine_mask_Spine_analyzer_final = nib.Nifti1Image(Spine_mask_Spine_analyzer_final, img.affine, img.header)
+nib.save(TMP_Spine_mask_Spine_analyzer_final, path_to_database + '\Myel_' + pacient +'\Spine_labels\Spine_analyzer\myel_' + pacient +'_spine_seg_SA_' + version_of_SA + '.nii.gz')
 
 #%% leze
-pom_Leze_Spine_analyzer_final = nib.Nifti1Image(Leze_Spine_analyzer_final, img.affine, img.header)
-nib.save(pom_Leze_Spine_analyzer_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_SA.nii.gz')
+TMP_Lesion_mask_Spine_analyzer_final = nib.Nifti1Image(Lesion_mask_Spine_analyzer_final, img.affine, img.header)
+nib.save(TMP_Lesion_mask_Spine_analyzer_final, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_SA_' + version_of_SA + '.nii.gz')
 
 #%% maska obratlu nnUNet
-pom_seg_nn_unet_final = nib.Nifti1Image(seg_nn_unet_final, img.affine, img.header)
-nib.save(pom_seg_nn_unet_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Spine_labels/NN_Unet/myel_' + pacient +'_spine_seg_nnUNet.nii.gz')
+TMP_seg_nn_unet_final = nib.Nifti1Image(seg_nn_unet_final, img.affine, img.header)
+nib.save(TMP_seg_nn_unet_final, path_to_database + '\Myel_' + pacient +'\Spine_labels/NN_Unet/myel_' + pacient +'_spine_seg_nnUNet.nii.gz')
 
 #%% Vytvoření semantické segmentace lézí z nnUNetu
-leze_nnUNet = loadmat('E:\Znaceni_dat\Data\Myel_'+pacient+'\Lesion_labels\Myel_' + pacient +'_lesions_nnUNet_semantic.mat')
+leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_nnUNet_' + version_of_nnUNet + '_semantic.mat')
 leze_nnUNet=leze_nnUNet.get('L')
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
-nib.save(pom_leze_nnUNet, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_nnUNet_semantic.nii.gz')
+nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_'+ version_of_nnUNet +'_semantic.nii.gz')
 #%%%%
 
 
@@ -51,39 +52,39 @@ nib.save(pom_leze_nnUNet, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Lesion_labels
 
 #%% Myel_010 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
 pacient='010';
-pacient_ID='S55480';
 Conv_sken='S201320';
+path_to_database='E:\Znaceni_dat\Data';
+version_of_nnUNet='v_1_0';
+version_of_SA='v_4_3';
 #%%
-Leze_Spine_analyzer_final=loadmat('E:\Znaceni_dat\Data\Myel_'+pacient+'\Spine_labels\Spine_analyzer/Leze_Spine_analyzer_final.mat')
-Leze_Spine_analyzer_final=Leze_Spine_analyzer_final.get('Leze_Spine_analyzer_final')
+Spine_mask_Spine_analyzer_final=loadmat( path_to_database + '\Myel_'+pacient+'\TMP/Spine_mask_Spine_analyzer_final.mat')
+Spine_mask_Spine_analyzer_final=Spine_mask_Spine_analyzer_final.get('Spine_mask_Spine_analyzer_final')
 
-maska_Spine_analyzer_final=loadmat('E:\Znaceni_dat\Data\Myel_'+pacient+'\Spine_labels\Spine_analyzer/maska_Spine_analyzer_final.mat')
-maska_Spine_analyzer_final=maska_Spine_analyzer_final.get('maska_Spine_analyzer_final')
+Lesion_mask_Spine_analyzer_final=loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Lesion_mask_Spine_analyzer_final.mat')
+Lesion_mask_Spine_analyzer_final=Lesion_mask_Spine_analyzer_final.get('Lesion_mask_Spine_analyzer_final')
 
-seg_nn_unet_final=loadmat('E:\Znaceni_dat\Data\Myel_'+pacient+'\Spine_labels/NN_unet/seg_nn_unet_final.mat')
+seg_nn_unet_final=loadmat(path_to_database + '\Myel_'+pacient+'\TMP/seg_nn_unet_final.mat')
 seg_nn_unet_final=seg_nn_unet_final.get('seg_nn_unet_final')
-
-
 #%%
-img = nib.load('E:\Znaceni_dat\Data\Myel_' + pacient +'\Spine_labels\Payer\Payer_20132_myel_' + pacient +'_spine.nii.gz')
+img = nib.load(path_to_database + '\Myel_' + pacient +'\Spine_labels\Payer\myel_' + pacient +'_spine_seg_Payer.nii.gz')
 
-#%% maska obratlu
-pom_maska_Spine_analyzer_final = nib.Nifti1Image(maska_Spine_analyzer_final, img.affine, img.header)
-nib.save(pom_maska_Spine_analyzer_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Spine_labels\Spine_analyzer\Spine_analyzer_20132_myel_' + pacient +'_spine.nii.gz')
+#%% maska obratlu SA
+TMP_Spine_mask_Spine_analyzer_final = nib.Nifti1Image(Spine_mask_Spine_analyzer_final, img.affine, img.header)
+nib.save(TMP_Spine_mask_Spine_analyzer_final, path_to_database + '\Myel_' + pacient +'\Spine_labels\Spine_analyzer\myel_' + pacient +'_spine_seg_SA_' + version_of_SA + '.nii.gz')
 
 #%% leze
-pom_Leze_Spine_analyzer_final = nib.Nifti1Image(Leze_Spine_analyzer_final, img.affine, img.header)
-nib.save(pom_Leze_Spine_analyzer_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_SA.nii.gz')
+TMP_Lesion_mask_Spine_analyzer_final = nib.Nifti1Image(Lesion_mask_Spine_analyzer_final, img.affine, img.header)
+nib.save(TMP_Lesion_mask_Spine_analyzer_final, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_SA_' + version_of_SA + '.nii.gz')
 
 #%% maska obratlu nnUNet
-pom_seg_nn_unet_final = nib.Nifti1Image(seg_nn_unet_final, img.affine, img.header)
-nib.save(pom_seg_nn_unet_final, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Spine_labels/NN_Unet/myel_' + pacient +'_spine_seg_nnUNet.nii.gz')
+TMP_seg_nn_unet_final = nib.Nifti1Image(seg_nn_unet_final, img.affine, img.header)
+nib.save(TMP_seg_nn_unet_final, path_to_database + '\Myel_' + pacient +'\Spine_labels/NN_Unet/myel_' + pacient +'_spine_seg_nnUNet.nii.gz')
 
 #%% Vytvoření semantické segmentace lézí z nnUNetu
-leze_nnUNet = loadmat('E:\Znaceni_dat\Data\Myel_'+pacient+'\Lesion_labels\Myel_' + pacient +'_lesions_nnUNet_semantic.mat')
+leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_nnUNet_' + version_of_nnUNet + '_semantic.mat')
 leze_nnUNet=leze_nnUNet.get('L')
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
-nib.save(pom_leze_nnUNet, 'E:\Znaceni_dat\Data\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_nnUNet_semantic.nii.gz')
+nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_'+ version_of_nnUNet +'_semantic.nii.gz')
 
 
 
