@@ -316,7 +316,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -345,7 +344,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -374,7 +372,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -403,7 +400,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -432,7 +428,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -461,7 +456,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -490,7 +484,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -519,7 +512,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -548,7 +540,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -577,7 +568,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -606,7 +596,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -635,7 +624,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -664,7 +652,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -693,7 +680,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -722,7 +708,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -751,7 +736,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -780,7 +764,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -809,7 +792,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -838,7 +820,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -867,7 +848,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -896,7 +876,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -925,7 +904,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -954,7 +932,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -983,7 +960,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -1012,7 +988,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
@@ -1041,7 +1016,6 @@ imfuse5(data, seg_nn_unet)
 %%
 imfuse5(data, seg_spine_analyzer)
 %% Lesions
-% path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_validation_MN.nii.gz'];
 path_to_lesions=['E:\Znaceni_dat\Data\Myel_' pacient '\Lesion_labels\Myel_' pacient '_lesions_SA_v_4_3.nii.gz'];
 seg_lesions=niftiread(path_to_lesions);
 %%
