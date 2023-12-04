@@ -18,18 +18,17 @@ import nibabel as nib
 if __name__ == "__main__":
     
     ### 
-    #base = 'E:/Znaceni_dat/Data_pom/'
-    base = 'E:/Znaceni_dat/Data_pom2/'
+    base = 'E:/Znaceni_dat/Data_pom/'
     
     task_id = 600
     task_name = "MM_lesion_segmentation"
-    version_name = "_lesion_seg_nnUNet_v_1_0"
+    version_name = "_lesions_seg_nnUNet_v_1_0"
     
     foldername = "Dataset%03.0d_%s" % (task_id, task_name)    
     out_base = join('E://Znaceni_dat/nnUNet_MAIN_lesions/nnUNet_raw', foldername)  
     maybe_mkdir_p(out_base)
     
-    imagests = join(out_base, "imagesTs/Predikce_myel_031_040")
+    imagests = join(out_base, "imagesTs/Predikce_myel_041_081")
      
     maybe_mkdir_p(imagests)   
     train_patient_names = []

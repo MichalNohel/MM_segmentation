@@ -148,5 +148,158 @@ create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUN
 patient='040';
 save_nifti=1;
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%%
+
+
+
+
+%%
+addpath Functions
+path_to_database='E:\Znaceni_dat\Data_pom';
+version_of_nnUNet='v_1_0';
+%% Myel_041
+patient='041';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_042 problém převodu dicom2nifti - uložení mat file a přeuložení v pythonu. oprava masky nnUNet
+patient='042';
+save_nifti=0;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_043
+patient='043';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_044
+patient='044';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_045
+patient='045';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_046
+patient='046';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_047
+patient='047';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_048
+patient='048';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_050 problém převodu dicom2nifti - uložení mat file a přeuložení v pythonu. oprava masky nnUNet
+patient='050';
+save_nifti=0;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_051
+patient='051';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_052
+patient='052';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_053
+patient='053';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_054
+patient='054';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_055
+patient='055';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_056
+patient='056';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_057
+patient='057';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_058
+patient='058';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_059
+patient='059';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_060 problém převodu dicom2nifti - uložení mat file a přeuložení v pythonu. oprava masky nnUNet
+patient='060';
+save_nifti=0;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_061
+patient='061';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_062
+patient='062';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_063
+patient='063';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_064
+patient='064';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_065
+patient='065';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_066
+patient='066';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_067
+patient='067';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_068
+patient='068';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_069
+patient='069';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_070
+patient='070';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_071
+patient='071';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_072 problém převodu dicom2nifti - uložení mat file a přeuložení v pythonu. oprava masky nnUNet
+patient='072';
+save_nifti=0;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_077
+patient='077';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_078
+patient='078';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_079
+patient='079';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_080
+patient='080';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
+%% Myel_081
+patient='081';
+save_nifti=1;
+create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 
 
