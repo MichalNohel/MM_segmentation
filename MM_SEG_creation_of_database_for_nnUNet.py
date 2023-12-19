@@ -19,11 +19,12 @@ if __name__ == "__main__":
     ### 
     base = 'E:/Znaceni_dat/Data/'
     
-    task_id = 701
-    task_name = "MM_lession_segmentation_model_01_konvCT"
+    task_id = 600
+    version_name = "_lesions_seg_nnUNet_v_1_0"
+    task_name = "MM" + version_name + "_konvCT_validation_MN"
     
     foldername = "Dataset%03.0d_%s" % (task_id, task_name)    
-    out_base = join('E://Znaceni_dat/nnUNet_MAIN_lesions/nnUNet_raw', foldername)  
+    out_base = join('E://nnUNet_v2_MAIN_FILE/nnUNet_raw', foldername)  
     maybe_mkdir_p(out_base)
     
     imagestr = join(out_base, "imagesTr")
@@ -36,8 +37,10 @@ if __name__ == "__main__":
     num_training_cases = 0
     
     ### Pouze convCT a maska obratlů
-    
-    for t in subdirs(base, join=False): 
+    #subdirs(base, join=False,prefix="Myel_01")
+    train_pacients=['Myel_001', 'Myel_002', 'Myel_003', 'Myel_004', 'Myel_005', 'Myel_006', 'Myel_007', 'Myel_008', 'Myel_009', 'Myel_010']
+    #for t in subdirs(base, join=False): 
+    for t in train_pacients: 
         #imagestr - složka s trénovacími daty  
         #konvenční CT
         train_patient_names=subfiles(join(base, t, 'ConvCT_data_nifti'), join=False, suffix=".nii.gz")[0]
@@ -46,7 +49,7 @@ if __name__ == "__main__":
         shutil.copy(image_file, join(imagestr, t + "_0000.nii.gz"))
         
         #Vysegmentovaná páteř        
-        train_spine_segm = subfiles(join(base, t, 'Spine_labels/NN_Unet'), join=False, suffix="spine.nii.gz")[0]    
+        train_spine_segm = subfiles(join(base, t, 'Spine_labels/NN_Unet'), join=False, suffix="spine_seg_nnUNet.nii.gz")[0]    
         curr = join(base, t, 'Spine_labels/NN_Unet')        
         image_file = join(curr, train_spine_segm)
         img = nib.load(image_file)
@@ -78,5 +81,5 @@ if __name__ == "__main__":
                           num_training_cases=num_training_cases,)
 
     #%%
-    reorient_all_images_in_folder_to_ras(imagestr,1)
-    reorient_all_images_in_folder_to_ras(labelstr,1)
+    #reorient_all_images_in_folder_to_ras(imagestr,1)
+    #reorient_all_images_in_folder_to_ras(labelstr,1)
