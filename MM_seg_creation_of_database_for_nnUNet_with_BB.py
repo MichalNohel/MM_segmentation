@@ -4,7 +4,7 @@ Created on Thu Aug 17 13:35:02 2023
 
 @author: nohel
 """
-from Functions.nnU_Net_preprocesing_functions import maybe_mkdir_p,subfiles,reorient_all_images_in_folder_to_ras, generate_dataset_json, get_3d_bounding_box
+from Functions.nnU_Net_preprocesing_functions import maybe_mkdir_p,subfiles,reorient_all_images_in_folder_to_ras, generate_dataset_json, get_3d_bounding_box,NumpyArrayEncoder
 from batchgenerators.utilities.file_and_folder_operations import *
 import shutil
 import os
@@ -52,7 +52,13 @@ if __name__ == "__main__":
         nii_img=img.get_fdata()
         nii_img=nii_img.astype(bool) # maska obratlu nnUNet binarne 
         
-        min_coords, max_coords = get_3d_bounding_box(nii_img)  # nalezeni BB pro 3D 
+        min_coords, max_coords = get_3d_bounding_box(nii_img)  # nalezeni BB pro 3D     
+
+        coordinates={'min_coords': min_coords,'max_coords': max_coords}   # uložení JSON souboru
+        with open(join(imagestr, t + ".json"), "w") as f:
+            json.dump(coordinates, f, cls=NumpyArrayEncoder)
+            
+        
         
         cut_nii_img = nii_img[min_coords[0]:max_coords[0]+1,
                       min_coords[1]:max_coords[1]+1,
