@@ -18,6 +18,8 @@ from batchgenerators.utilities.file_and_folder_operations import *
 import nibabel as nib
 from nibabel import io_orientation
 from batchgenerators.utilities.file_and_folder_operations import save_json, join
+import json
+from json import JSONEncoder
 
 
 'Function definition'
@@ -311,3 +313,9 @@ def get_3d_bounding_box(array):
     max_coords = np.max(indices, axis=0)
  
     return min_coords, max_coords
+
+class NumpyArrayEncoder(JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return JSONEncoder.default(self, obj)
