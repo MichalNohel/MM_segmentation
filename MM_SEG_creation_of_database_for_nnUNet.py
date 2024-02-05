@@ -60,8 +60,8 @@ if __name__ == "__main__":
         
         '''
         #VMI 40keV
-        vmi_40kev=subfiles(join(base, t, 'VMI_data_nifti'), join=False, suffix="40kev.nii.gz")[0] 
-        curr = join(base, t, 'VMI_data_nifti')
+        vmi_40kev=subfiles(join(base, t, 'VMI'), join=False, suffix="40kev.nii.gz")[0] 
+        curr = join(base, t, 'VMI')
         image_file = join(curr, vmi_40kev)
         shutil.copy(image_file, join(imagestr, t + "_0002.nii.gz"))
         '''

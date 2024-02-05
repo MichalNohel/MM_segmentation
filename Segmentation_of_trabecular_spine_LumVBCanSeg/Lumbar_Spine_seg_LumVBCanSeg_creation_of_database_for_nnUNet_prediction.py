@@ -6,6 +6,10 @@ Created on Thu Feb  1 21:25:45 2024
 """
 
 #from Functions.nnU_Net_preprocesing_functions import maybe_mkdir_p,subfiles,reorient_all_images_in_folder_to_ras, generate_dataset_json
+
+import sys
+#sys.path.append('E:\Znaceni_dat\MM_segmentation\Functions')
+sys.path.append('..\Functions')
 from nnU_Net_preprocesing_functions import maybe_mkdir_p,subfiles,reorient_all_images_in_folder_to_ras, generate_dataset_json
 from batchgenerators.utilities.file_and_folder_operations import *
 import shutil

@@ -4,7 +4,7 @@ Created on Thu Aug 17 13:35:02 2023
 
 @author: nohel
 """
-from Functions.nnU_Net_preprocesing_functions import maybe_mkdir_p,subfiles,reorient_all_images_in_folder_to_ras, generate_dataset_json
+from Functions.nnU_Net_preprocesing_functions import maybe_mkdir_p,subfiles,reorient_all_images_in_folder_to_ras, generate_dataset_json, get_3d_bounding_box
 from batchgenerators.utilities.file_and_folder_operations import *
 import shutil
 import os
@@ -27,7 +27,7 @@ if __name__ == "__main__":
     foldername = "Dataset%03.0d_%s" % (task_id, task_name)    
     out_base = join('E://nnUNet_v2_MAIN_FILE/nnUNet_raw', foldername)  
     maybe_mkdir_p(out_base)
-    '''
+
     imagestr = join(out_base, "imagesTr")
     imagests = join(out_base, "imagesTs")
     labelstr = join(out_base, "labelsTr")   
@@ -36,45 +36,87 @@ if __name__ == "__main__":
     maybe_mkdir_p(labelstr)    
     train_patient_names = []
     num_training_cases = 0
-    '''
-    
-    ### Pouze convCT a maska obratlů
-    t='Myel_002'
-    train_spine_segm = subfiles(join(base, t, 'Spine_labels/NN_Unet'), join=False, suffix="spine_seg_nnUNet.nii.gz")[0]
-    curr = join(base, t, 'Spine_labels/NN_Unet')        
-    image_file = join(curr, train_spine_segm)
-    img = nib.load(image_file)
-    data=img.get_fdata()
-    data=data.astype(bool) # maska obratlu nnUNet binarne 
-    cols = np.any(data,axis=0)
-    rows = np.any(data, axis=1)    
-    z_slices = np.any(data, axis=2)
-    
-    rmin, rmax = np.where(rows)[0][[0, -1]]
-    cmin, cmax = np.where(cols)[0][[0, -1]]
-    zmin, zmax = np.where(z_slices)[0][[0, -1]]
-    
-    data_withBB=data.copy()
-    np_seg = np.array(data_withBB)
-    segmentation = np.where(np_seg == 1)
-    
-    pom_seg_nn_unet_binar = nib.Nifti1Image(data, img.affine, img.header)
-    nib.save(pom_seg_nn_unet_binar, join(imagestr, t + "_0001.nii.gz"))
-    '''
-    # the fuction
-    def bounding_box(img):
-    rows = np.any(img, axis=1)
-    cols = np.any(img, axis=0)
-    rmin, rmax = np.where(rows)[0][[0, -1]]
-    cmin, cmax = np.where(cols)[0][[0, -1]]
-    return rmin, rmax, cmin, cmax # y1, y2, x1, x2 
 
-    # process the mask array with the above function
-    bounding_box(img=mask_up)
-    '''
+
+    ### Pouze convCT a maska obratlů
+    #subdirs(base, join=False,prefix="Myel_01")
+    train_pacients=['Myel_001', 'Myel_002', 'Myel_003', 'Myel_004', 'Myel_005', 'Myel_006', 'Myel_007', 'Myel_008', 'Myel_009', 'Myel_010']
+    #for t in subdirs(base, join=False): 
+    for t in train_pacients: 
+        #imagestr - složka s trénovacími daty  
+        #Vysegmentovaná páteř a detekce BB      
+        train_spine_segm = subfiles(join(base, t, 'Spine_labels/NN_Unet'), join=False, suffix="spine_seg_nnUNet.nii.gz")[0]    
+        curr = join(base, t, 'Spine_labels/NN_Unet')        
+        image_file = join(curr, train_spine_segm)
+        img = nib.load(image_file)
+        nii_img=img.get_fdata()
+        nii_img=nii_img.astype(bool) # maska obratlu nnUNet binarne 
+        
+        min_coords, max_coords = get_3d_bounding_box(nii_img)  # nalezeni BB pro 3D 
+        
+        cut_nii_img = nii_img[min_coords[0]:max_coords[0]+1,
+                      min_coords[1]:max_coords[1]+1,
+                      min_coords[2]:max_coords[2]+1].copy()
+
+        pom_seg_nn_unet_binar = nib.Nifti1Image(cut_nii_img, img.affine, img.header)
+        nib.save(pom_seg_nn_unet_binar, join(imagestr, t + "_0001.nii.gz")) 
+        
+        
+        #konvenční CT
+        train_patient_names=subfiles(join(base, t, 'ConvCT_data_nifti'), join=False, suffix=".nii.gz")[0]
+        curr = join(base, t, 'ConvCT_data_nifti')
+        image_file = join(curr, train_patient_names)
+        img = nib.load(image_file)
+        nii_img=img.get_fdata()
+        cut_nii_img = nii_img[min_coords[0]:max_coords[0]+1,
+                      min_coords[1]:max_coords[1]+1,
+                      min_coords[2]:max_coords[2]+1].copy()
+
+        pom_seg_nn_unet_binar = nib.Nifti1Image(cut_nii_img, img.affine, img.header)
+        nib.save(pom_seg_nn_unet_binar, join(imagestr, t + "_0000.nii.gz")) 
+        
+        
+        
+        #VMI 40keV
+        vmi_40kev=subfiles(join(base, t, 'VMI'), join=False, suffix="40kev.nii.gz")[0] 
+        curr = join(base, t, 'VMI')
+        image_file = join(curr, vmi_40kev)
+        img = nib.load(image_file)
+        nii_img=img.get_fdata()
+        cut_nii_img = nii_img[min_coords[0]:max_coords[0]+1,
+                      min_coords[1]:max_coords[1]+1,
+                      min_coords[2]:max_coords[2]+1].copy()
+
+        pom_seg_nn_unet_binar = nib.Nifti1Image(cut_nii_img, img.affine, img.header)
+        nib.save(pom_seg_nn_unet_binar, join(imagestr, t + "_0002.nii.gz")) 
+        
+        
+        #labelstr - složka s anotacemi lézí
+        train_lesions_names = subfiles(join(base, t, 'Lesion_labels'), join=False, suffix="MN.nii.gz")[0]    
+        curr = join(base, t, 'Lesion_labels')
+        image_file = join(curr, train_lesions_names)
+        img = nib.load(image_file)
+        nii_img=img.get_fdata()
+        cut_nii_img = nii_img[min_coords[0]:max_coords[0]+1,
+                      min_coords[1]:max_coords[1]+1,
+                      min_coords[2]:max_coords[2]+1].copy()
+
+        pom_seg_nn_unet_binar = nib.Nifti1Image(cut_nii_img, img.affine, img.header)
+        nib.save(pom_seg_nn_unet_binar, join(labelstr, t + ".nii.gz")) 
+        
+        num_training_cases += 1
     
     
-    
+    #%%
+    generate_dataset_json(output_folder=out_base,
+                          channel_names={0: "konvCT",1: "mask_spine", },
+                          labels={"background": 0,"Lesion": 1,},
+                          file_ending=".nii.gz",
+                          num_training_cases=num_training_cases,)
+
+    #%%
+    #reorient_all_images_in_folder_to_ras(imagestr,1)
+    #reorient_all_images_in_folder_to_ras(labelstr,1)
     
     
     

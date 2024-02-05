@@ -300,3 +300,14 @@ def generate_dataset_json(output_folder: str,
     dataset_json.update(kwargs)
 
     save_json(dataset_json, join(output_folder, 'dataset.json'), sort_keys=False)
+
+def get_3d_bounding_box(array):
+    indices = np.argwhere(array != 0)
+ 
+    if len(indices) == 0:
+        return None
+ 
+    min_coords = np.min(indices, axis=0)
+    max_coords = np.max(indices, axis=0)
+ 
+    return min_coords, max_coords
