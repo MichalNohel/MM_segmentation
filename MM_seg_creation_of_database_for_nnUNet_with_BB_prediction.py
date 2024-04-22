@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Aug 17 13:35:02 2023
+Created on Fri Apr 19 23:01:43 2024
 
 @author: nohel
 """
@@ -10,15 +10,13 @@ import shutil
 import os
 join = os.path.join
 import nibabel as nib
-import numpy as np
-
 
 #%%
 
 if __name__ == "__main__":
-        ### 
-    base = 'E:/Znaceni_dat/Data/'
     
+    ### 
+    base = 'E:/Znaceni_dat/Data/'
     task_id = 650
     version_name = "_lesions_seg_nnUNet_v_2_0"
     task_name = "MM" + version_name + "_VMI_40_validation_VV"
@@ -26,26 +24,23 @@ if __name__ == "__main__":
     foldername = "Dataset%03.0d_%s" % (task_id, task_name)    
     out_base = join('E://nnUNet_v2_MAIN_FILE/nnUNet_raw', foldername)  
     maybe_mkdir_p(out_base)
-
-    imagestr = join(out_base, "imagesTr")
-    imagests = join(out_base, "imagesTs")
-    labelstr = join(out_base, "labelsTr")   
-    crop_parameters_folder = join(out_base, "crop_parameters") 
-    maybe_mkdir_p(imagestr)
-    maybe_mkdir_p(imagests)
-    maybe_mkdir_p(labelstr)    
+    
+    imagests = join(out_base, "imagesTs/Predikce_follow_ups")
+    crop_parameters_folder = join(out_base, "crop_parameters/Prediction") 
+     
+    maybe_mkdir_p(imagests)   
     maybe_mkdir_p(crop_parameters_folder) 
     train_patient_names = []
-    num_training_cases = 0
-
-
-    ### Pouze convCT a maska obratlů
+    num_training_cases = 0 
+    
+    ### Pouze VMI a maska obratlů
     #subdirs(base, join=False,prefix="Myel_01")
-    train_pacients=['Myel_001', 'Myel_002', 'Myel_003', 'Myel_004', 'Myel_005', 'Myel_006', 'Myel_007', 'Myel_008', 'Myel_009', 'Myel_010']
+    predict_pacients=['Myel_012', 'Myel_018', 'Myel_023', 'Myel_024', 'Myel_043', 'Myel_047', 'Myel_052', 'Myel_059', 'Myel_069', 'Myel_070']
     #for t in subdirs(base, join=False): 
-    for t in train_pacients: 
+    for t in predict_pacients: 
         #imagestr - složka s trénovacími daty  
         #Vysegmentovaná páteř a detekce BB      
+        #train_spine_segm = subfiles(join(base, t, 'Spine_labels/NN_Unet'), join=False, suffix="spine_seg_nnUNet.nii.gz")[0]    
         train_spine_segm = subfiles(join(base, t, 'Spine_labels/NN_Unet'), join=False, suffix="spine_seg_nnUNet_cor.nii.gz")[0]    
         curr = join(base, t, 'Spine_labels/NN_Unet')        
         image_file = join(curr, train_spine_segm)
@@ -55,8 +50,8 @@ if __name__ == "__main__":
         
         min_coords, max_coords = get_3d_bounding_box(nii_img)  # nalezeni BB pro 3D     
         orig_size=nii_img.shape
-        
-        coordinates={'orig_size': orig_size, 'min_coords': min_coords,'max_coords': max_coords}   # uložení JSON souboru
+
+        coordinates={'orig_size': orig_size, 'min_coords': min_coords,'max_coords': max_coords}    # uložení JSON souboru
         with open(join(crop_parameters_folder, t + ".json"), "w") as f:
             json.dump(coordinates, f, cls=NumpyArrayEncoder)
             
@@ -67,7 +62,7 @@ if __name__ == "__main__":
                       min_coords[2]:max_coords[2]+1].copy()
 
         pom_seg_nn_unet_binar = nib.Nifti1Image(cut_nii_img, img.affine, img.header)
-        nib.save(pom_seg_nn_unet_binar, join(imagestr, t + "_0001.nii.gz")) 
+        nib.save(pom_seg_nn_unet_binar, join(imagests, t + "_0001.nii.gz")) 
         
         #VMI 40keV
         vmi_40kev=subfiles(join(base, t, 'VMI'), join=False, suffix="40kev.nii.gz")[0] 
@@ -80,7 +75,7 @@ if __name__ == "__main__":
                       min_coords[2]:max_coords[2]+1].copy()
 
         pom_seg_nn_unet_binar = nib.Nifti1Image(cut_nii_img, img.affine, img.header)
-        nib.save(pom_seg_nn_unet_binar, join(imagestr, t + "_0000.nii.gz")) 
+        nib.save(pom_seg_nn_unet_binar, join(imagests, t + "_0000.nii.gz")) 
         
         
         '''
@@ -95,49 +90,9 @@ if __name__ == "__main__":
                       min_coords[2]:max_coords[2]+1].copy()
 
         pom_seg_nn_unet_binar = nib.Nifti1Image(cut_nii_img, img.affine, img.header)
-        nib.save(pom_seg_nn_unet_binar, join(imagestr, t + "_0000.nii.gz")) 
+        nib.save(pom_seg_nn_unet_binar, join(imagests, t + "_0000.nii.gz")) 
         '''
-        
-        
-        
-        
-        
-        #labelstr - složka s anotacemi lézí
-        train_lesions_names = subfiles(join(base, t, 'Lesion_labels'), join=False, suffix="validation_VV_final.nii.gz")[0]    
-        curr = join(base, t, 'Lesion_labels')
-        image_file = join(curr, train_lesions_names)
-        img = nib.load(image_file)
-        nii_img=img.get_fdata()
-        
-        nii_img=nii_img.astype(bool) # maska lezi binarne 
-        
-        cut_nii_img = nii_img[min_coords[0]:max_coords[0]+1,
-                      min_coords[1]:max_coords[1]+1,
-                      min_coords[2]:max_coords[2]+1].copy()
-
-        pom_seg_nn_unet_binar = nib.Nifti1Image(cut_nii_img, img.affine, img.header)
-        nib.save(pom_seg_nn_unet_binar, join(labelstr, t + ".nii.gz")) 
-        
-        num_training_cases += 1
-    
-    
-    #%%
-    generate_dataset_json(output_folder=out_base,
-                          channel_names={0: "VMI_40",1: "mask_spine", },
-                          labels={"background": 0,"Lesion": 1,},
-                          file_ending=".nii.gz",
-                          num_training_cases=num_training_cases,)
-
-    #%%
-    #reorient_all_images_in_folder_to_ras(imagestr,1)
-    #reorient_all_images_in_folder_to_ras(labelstr,1)
-    
-    
-    
-    
-    
-    
-    
+        num_training_cases += 1    
     
     
     

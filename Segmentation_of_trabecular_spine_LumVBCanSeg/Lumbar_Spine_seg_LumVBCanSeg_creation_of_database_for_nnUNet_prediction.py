@@ -36,7 +36,7 @@ if __name__ == "__main__":
     train_patient_names = []
     num_training_cases = 0
     
-    train_pacients=['Healthy_006', 'Healthy_007', 'Healthy_008', 'Healthy_009', 'Healthy_010','Myel_002']
+    train_pacients=['Healthy_010','Myel_003']
     
     for t in train_pacients: 
         #imagestr - složka s trénovacími daty  
