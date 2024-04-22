@@ -9,7 +9,7 @@ path_to_lesions=[path_to_database '\Myel_' patient '\Lesion_labels\Myel_' patien
 seg_lesions=niftiread(path_to_lesions);
 L = bwlabeln(seg_lesions);
 L(L>0)=L(L>0)+1000;
-imfuse5(data, L)
+% imfuse5(data, L)
 info=niftiinfo(path_to_lesions);
 info.Datatype = 'double';
 if (save_nifti==1)

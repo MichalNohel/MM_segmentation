@@ -140,7 +140,7 @@ nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels
 #%% Myel_024 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
 pacient='024';
 path_to_database='E:\Znaceni_dat\Data';
-version_of_nnUNet='v_1_0';
+version_of_nnUNet='v_2_0';
 version_of_SA='v_4_3';
 #%%
 Spine_mask_Spine_analyzer_final=loadmat( path_to_database + '\Myel_'+pacient+'\TMP/Spine_mask_Spine_analyzer_final.mat')
