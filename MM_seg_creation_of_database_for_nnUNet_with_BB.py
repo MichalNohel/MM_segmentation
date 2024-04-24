@@ -19,9 +19,9 @@ if __name__ == "__main__":
         ### 
     base = 'E:/Znaceni_dat/Data/'
     
-    task_id = 650
+    task_id = 651
     version_name = "_lesions_seg_nnUNet_v_2_0"
-    task_name = "MM" + version_name + "_VMI_40_validation_VV"
+    task_name = "MM" + version_name + "_CaSupp_validation_VV"
     
     foldername = "Dataset%03.0d_%s" % (task_id, task_name)    
     out_base = join('E://nnUNet_v2_MAIN_FILE/nnUNet_raw', foldername)  
@@ -45,6 +45,7 @@ if __name__ == "__main__":
     #for t in subdirs(base, join=False): 
     for t in train_pacients: 
         #imagestr - složka s trénovacími daty  
+        '''
         #Vysegmentovaná páteř a detekce BB      
         train_spine_segm = subfiles(join(base, t, 'Spine_labels/NN_Unet'), join=False, suffix="spine_seg_nnUNet_cor.nii.gz")[0]    
         curr = join(base, t, 'Spine_labels/NN_Unet')        
@@ -68,7 +69,8 @@ if __name__ == "__main__":
 
         pom_seg_nn_unet_binar = nib.Nifti1Image(cut_nii_img, img.affine, img.header)
         nib.save(pom_seg_nn_unet_binar, join(imagestr, t + "_0001.nii.gz")) 
-        
+        '''
+        '''
         #VMI 40keV
         vmi_40kev=subfiles(join(base, t, 'VMI'), join=False, suffix="40kev.nii.gz")[0] 
         curr = join(base, t, 'VMI')
@@ -81,7 +83,7 @@ if __name__ == "__main__":
 
         pom_seg_nn_unet_binar = nib.Nifti1Image(cut_nii_img, img.affine, img.header)
         nib.save(pom_seg_nn_unet_binar, join(imagestr, t + "_0000.nii.gz")) 
-        
+        '''
         
         '''
         #konvenční CT
@@ -101,6 +103,48 @@ if __name__ == "__main__":
         
         
         
+        #CaSupp 25 problem se spacingem - oprava
+        #Vysegmentovaná páteř a detekce BB      
+        train_spine_segm = subfiles(join(base, t, 'Spine_labels/NN_Unet'), join=False, suffix="spine_seg_nnUNet_cor.nii.gz")[0]    
+        curr = join(base, t, 'Spine_labels/NN_Unet')        
+        image_file = join(curr, train_spine_segm)
+        img = nib.load(image_file)
+        nii_img=img.get_fdata()
+        nii_img=nii_img.astype(bool) # maska obratlu nnUNet binarne 
+        
+        min_coords, max_coords = get_3d_bounding_box(nii_img)  # nalezeni BB pro 3D     
+        orig_size=nii_img.shape
+        
+        coordinates={'orig_size': orig_size, 'min_coords': min_coords,'max_coords': max_coords}   # uložení JSON souboru
+        with open(join(crop_parameters_folder, t + ".json"), "w") as f:
+            json.dump(coordinates, f, cls=NumpyArrayEncoder)   
+        cut_nii_img = nii_img[min_coords[0]:max_coords[0]+1,
+                      min_coords[1]:max_coords[1]+1,
+                      min_coords[2]:max_coords[2]+1].copy()
+        
+        train_patient_names=subfiles(join(base, t, 'CaSupp_data_nifti'), join=False, suffix=".nii.gz")[0]
+        curr = join(base, t, 'CaSupp_data_nifti')
+        image_file = join(curr, train_patient_names)
+        img_casupp = nib.load(image_file)
+        
+        pom_seg_nn_unet_binar = nib.Nifti1Image(cut_nii_img, img_casupp.affine, img_casupp.header)
+        nib.save(pom_seg_nn_unet_binar, join(imagestr, t + "_0001.nii.gz")) 
+        
+        
+        nii_img=img_casupp.get_fdata()
+        cut_nii_img = nii_img[min_coords[0]:max_coords[0]+1,
+                      min_coords[1]:max_coords[1]+1,
+                      min_coords[2]:max_coords[2]+1].copy()
+
+        pom_seg_nn_unet_binar = nib.Nifti1Image(cut_nii_img, img_casupp.affine, img_casupp.header)
+        nib.save(pom_seg_nn_unet_binar, join(imagestr, t + "_0000.nii.gz")) 
+        
+        
+        
+        
+        
+        
+        
         
         #labelstr - složka s anotacemi lézí
         train_lesions_names = subfiles(join(base, t, 'Lesion_labels'), join=False, suffix="validation_VV_final.nii.gz")[0]    
@@ -115,7 +159,7 @@ if __name__ == "__main__":
                       min_coords[1]:max_coords[1]+1,
                       min_coords[2]:max_coords[2]+1].copy()
 
-        pom_seg_nn_unet_binar = nib.Nifti1Image(cut_nii_img, img.affine, img.header)
+        pom_seg_nn_unet_binar = nib.Nifti1Image(cut_nii_img, img_casupp.affine, img_casupp.header)
         nib.save(pom_seg_nn_unet_binar, join(labelstr, t + ".nii.gz")) 
         
         num_training_cases += 1
@@ -123,7 +167,8 @@ if __name__ == "__main__":
     
     #%%
     generate_dataset_json(output_folder=out_base,
-                          channel_names={0: "VMI_40",1: "mask_spine", },
+                          channel_names={0: "CaSupp_25",1: "mask_spine", },
+                          #channel_names={0: "VMI_40",1: "mask_spine", },
                           labels={"background": 0,"Lesion": 1,},
                           file_ending=".nii.gz",
                           num_training_cases=num_training_cases,)
