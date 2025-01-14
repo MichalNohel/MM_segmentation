@@ -103,7 +103,7 @@ nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels
 #%% Myel_021 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
 pacient='021';
 path_to_database='E:\Znaceni_dat\Data';
-version_of_nnUNet='v_1_0';
+version_of_nnUNet='v_2_1';
 version_of_SA='v_4_3';
 #%%
 Spine_mask_Spine_analyzer_final=loadmat( path_to_database + '\Myel_'+pacient+'\TMP/Spine_mask_Spine_analyzer_final.mat')
@@ -130,6 +130,8 @@ TMP_seg_nn_unet_final = nib.Nifti1Image(seg_nn_unet_final, img.affine, img.heade
 nib.save(TMP_seg_nn_unet_final, path_to_database + '\Myel_' + pacient +'\Spine_labels/NN_Unet/myel_' + pacient +'_spine_seg_nnUNet.nii.gz')
 
 #%% Vytvoření semantické segmentace lézí z nnUNetu
+version_of_nnUNet='v_2_1';
+img = nib.load(path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_' + version_of_nnUNet + '.nii.gz')
 leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_nnUNet_' + version_of_nnUNet + '_semantic.mat')
 leze_nnUNet=leze_nnUNet.get('L')
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
@@ -177,7 +179,7 @@ nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels
 #%% Myel_029 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
 pacient='029';
 path_to_database='E:\Znaceni_dat\Data';
-version_of_nnUNet='v_1_0';
+version_of_nnUNet='v_2_1';
 version_of_SA='v_4_3';
 #%%
 Spine_mask_Spine_analyzer_final=loadmat( path_to_database + '\Myel_'+pacient+'\TMP/Spine_mask_Spine_analyzer_final.mat')
@@ -204,6 +206,8 @@ TMP_seg_nn_unet_final = nib.Nifti1Image(seg_nn_unet_final, img.affine, img.heade
 nib.save(TMP_seg_nn_unet_final, path_to_database + '\Myel_' + pacient +'\Spine_labels/NN_Unet/myel_' + pacient +'_spine_seg_nnUNet.nii.gz')
 
 #%% Vytvoření semantické segmentace lézí z nnUNetu
+version_of_nnUNet='v_2_1';
+img = nib.load(path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_' + version_of_nnUNet + '.nii.gz')
 leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_nnUNet_' + version_of_nnUNet + '_semantic.mat')
 leze_nnUNet=leze_nnUNet.get('L')
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
@@ -213,7 +217,7 @@ nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels
 #%% Myel_031 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
 pacient='031';
 path_to_database='E:\Znaceni_dat\Data';
-version_of_nnUNet='v_1_0';
+version_of_nnUNet='v_2_1';
 version_of_SA='v_4_3';
 #%%
 Spine_mask_Spine_analyzer_final=loadmat( path_to_database + '\Myel_'+pacient+'\TMP/Spine_mask_Spine_analyzer_final.mat')
@@ -240,6 +244,8 @@ TMP_seg_nn_unet_final = nib.Nifti1Image(seg_nn_unet_final, img.affine, img.heade
 nib.save(TMP_seg_nn_unet_final, path_to_database + '\Myel_' + pacient +'\Spine_labels/NN_Unet/myel_' + pacient +'_spine_seg_nnUNet.nii.gz')
 
 #%% Vytvoření semantické segmentace lézí z nnUNetu
+version_of_nnUNet='v_2_1';
+img = nib.load(path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_' + version_of_nnUNet + '.nii.gz')
 leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_nnUNet_' + version_of_nnUNet + '_semantic.mat')
 leze_nnUNet=leze_nnUNet.get('L')
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
@@ -248,8 +254,8 @@ nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels
 
 #%% Myel_042 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
 pacient='042';
-path_to_database='E:\Znaceni_dat\Data_pom';
-version_of_nnUNet='v_1_0';
+path_to_database='E:\Znaceni_dat\Data';
+version_of_nnUNet='v_2_1';
 version_of_SA='v_4_3';
 #%%
 Spine_mask_Spine_analyzer_final=loadmat( path_to_database + '\Myel_'+pacient+'\TMP/Spine_mask_Spine_analyzer_final.mat')
@@ -283,10 +289,11 @@ pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
 nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_'+ version_of_nnUNet +'_semantic.nii.gz')
 
 
+
 #%% Myel_050 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
 pacient='050';
-path_to_database='E:\Znaceni_dat\Data_pom';
-version_of_nnUNet='v_1_0';
+path_to_database='E:\Znaceni_dat\Data';
+version_of_nnUNet='v_2_1';
 version_of_SA='v_4_3';
 #%%
 Spine_mask_Spine_analyzer_final=loadmat( path_to_database + '\Myel_'+pacient+'\TMP/Spine_mask_Spine_analyzer_final.mat')
@@ -323,8 +330,8 @@ nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels
 
 #%% Myel_060 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
 pacient='060';
-path_to_database='E:\Znaceni_dat\Data_pom';
-version_of_nnUNet='v_1_0';
+path_to_database='E:\Znaceni_dat\Data';
+version_of_nnUNet='v_2_1';
 version_of_SA='v_4_3';
 #%%
 Spine_mask_Spine_analyzer_final=loadmat( path_to_database + '\Myel_'+pacient+'\TMP/Spine_mask_Spine_analyzer_final.mat')
@@ -352,8 +359,13 @@ nib.save(TMP_seg_nn_unet_final, path_to_database + '\Myel_' + pacient +'\Spine_l
 
 
 #%% Vytvoření semantické segmentace lézí z nnUNetu
-leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_nnUNet_' + version_of_nnUNet + '_semantic.mat')
-leze_nnUNet=leze_nnUNet.get('L')
+import h5py
+#leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_nnUNet_' + version_of_nnUNet + '_semantic.mat')
+#leze_nnUNet=leze_nnUNet.get('L')
+with h5py.File(path_to_database + '/Myel_' + pacient + '/TMP/Myel_' + pacient + '_lesions_seg_nnUNet_' + version_of_nnUNet + '_semantic.mat', 'r') as file:
+    # Získání datového pole 'L'
+    leze_nnUNet = np.array(file['L'])  # Převedení na numpy pole
+    leze_nnUNet = np.transpose(leze_nnUNet, (2, 1, 0))
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
 nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_'+ version_of_nnUNet +'_semantic.nii.gz')
 

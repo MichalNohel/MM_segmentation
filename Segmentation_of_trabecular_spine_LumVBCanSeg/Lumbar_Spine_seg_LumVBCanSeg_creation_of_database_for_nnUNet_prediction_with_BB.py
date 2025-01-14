@@ -28,7 +28,7 @@ if __name__ == "__main__":
     out_base = join('E://nnUNet_v2_MAIN_FILE/nnUNet_raw', foldername)  
     maybe_mkdir_p(out_base)    
     
-    imagests = join(out_base, "imagesTs/Predict_clin_data_crop")
+    imagests = join(out_base, "imagesTs/Predict_clin_data_all_crop")
     crop_parameters_folder = join(out_base, "crop_parameters") 
        
     
@@ -40,9 +40,13 @@ if __name__ == "__main__":
     vertebrae_index=18
     safety_margin=20 #pocet pixelu o kolik se zvětší okraj segmentace
     
-    train_pacients=['Healthy_006','Healthy_007','Healthy_008','Healthy_009','Healthy_010','Myel_001', 'Myel_002', 'Myel_003', 'Myel_004', 'Myel_005', 'Myel_006', 'Myel_007', 'Myel_008', 'Myel_009', 'Myel_010']
-    
+    # train_pacients=['Healthy_006','Healthy_007','Healthy_008','Healthy_009','Healthy_010','Myel_001', 'Myel_002', 'Myel_003', 'Myel_004', 'Myel_005', 'Myel_006', 'Myel_007', 'Myel_008', 'Myel_009', 'Myel_010']
+    train_pacients = subdirs(base, join=False,prefix="Myel_")
+    # train_pacients=['Myel_046','Myel_052','Myel_064']
     for t in train_pacients: 
+        
+        if t == 'Myel_017':
+            continue
         
         #Vysegmentovaná páteř a detekce BB      
         #train_spine_segm = subfiles(join(base, t, 'Spine_labels/NN_Unet'), join=False, suffix="spine_seg_nnUNet.nii.gz")[0]    
@@ -57,7 +61,9 @@ if __name__ == "__main__":
         min_coords, max_coords = get_3d_bounding_box(nii_img)  # nalezeni BB pro 3D     
         orig_size=nii_img.shape
         min_coords=min_coords-safety_margin
+        min_coords = np.where(min_coords < 0, 0, min_coords)
         max_coords=max_coords+safety_margin
+        max_coords = np.where(max_coords > orig_size, orig_size, max_coords)
         
         coordinates={'orig_size': orig_size, 'min_coords': min_coords,'max_coords': max_coords}    # uložení JSON souboru
         with open(join(crop_parameters_folder, t + ".json"), "w") as f:

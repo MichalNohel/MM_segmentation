@@ -17,21 +17,24 @@ if __name__ == "__main__":
     
     ### 
     base = 'E:/Znaceni_dat/Data/'
-    task_id = 650
-    version_name = "_lesions_seg_nnUNet_v_2_0"
+    task_id = 651
+    version_name = "_lesions_seg_nnUNet_v_2_1"
     task_name = "MM" + version_name + "_VMI_40_validation_VV"   
     foldername = "Dataset%03.0d_%s" % (task_id, task_name) 
     path_to_crop_parameters = join('E://nnUNet_v2_MAIN_FILE/nnUNet_raw', foldername,'crop_parameters/Prediction/')  
     # %% folder with predicted data from nnUNet
     path_to_predicted_segmentations=join('E://nnUNet_v2_MAIN_FILE/nnUNet_results/predict', foldername)
     # output folder for full size image
-    crop_parameters_folder = join(path_to_predicted_segmentations, "Predikce_follow_ups_full_size") 
+    crop_parameters_folder = join(path_to_predicted_segmentations, "Predikce_myel_041_060_full_size") 
     maybe_mkdir_p(crop_parameters_folder) 
     
     
     
     
-    predict_pacients=['Myel_012', 'Myel_018', 'Myel_023', 'Myel_024', 'Myel_043', 'Myel_047', 'Myel_052', 'Myel_059', 'Myel_069', 'Myel_070']
+    #predict_pacients=['Myel_012', 'Myel_018', 'Myel_023', 'Myel_024', 'Myel_043', 'Myel_047', 'Myel_052', 'Myel_059', 'Myel_069', 'Myel_070']
+    #predict_pacients=['Myel_011', 'Myel_014', 'Myel_015', 'Myel_016', 'Myel_017', 'Myel_019', 'Myel_020', 'Myel_021', 'Myel_022', 'Myel_025', 'Myel_026','Myel_027','Myel_028','Myel_029','Myel_030','Myel_031','Myel_033','Myel_034','Myel_036','Myel_038','Myel_039','Myel_040']
+    predict_pacients=['Myel_041', 'Myel_042', 'Myel_043','Myel_044','Myel_045','Myel_046','Myel_047', 'Myel_048','Myel_050','Myel_051','Myel_052','Myel_053','Myel_054','Myel_055','Myel_056','Myel_057','Myel_058','Myel_059','Myel_060']
+    
     for t in predict_pacients: 
         current_path=join(path_to_crop_parameters,t)
         #open json file and get coordinates
@@ -48,7 +51,7 @@ if __name__ == "__main__":
         image_file = join(curr, vmi_40kev)
         img = nib.load(image_file)
         #load predicted data
-        predicted_file=path_to_predicted_segmentations+'/Predikce_follow_ups/'+t+'.nii.gz'
+        predicted_file=path_to_predicted_segmentations+'/Predikce_myel_041_060/'+t+'.nii.gz'
         predicted_mask = nib.load(predicted_file)
         predicted_mask_data=predicted_mask.get_fdata()
         #create full size image

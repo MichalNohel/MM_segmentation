@@ -3,7 +3,7 @@ close all
 clc
 addpath Functions
 path_to_database='E:\Znaceni_dat\Data';
-version_of_nnUNet='v_1_0';
+version_of_nnUNet='v_2_1';
 
 %% Myel_001
 patient='001';
@@ -160,8 +160,8 @@ create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUN
 
 %%
 addpath Functions
-path_to_database='E:\Znaceni_dat\Data_pom';
-version_of_nnUNet='v_1_0';
+path_to_database='E:\Znaceni_dat\Data';
+version_of_nnUNet='v_2_1';
 %% Myel_041
 patient='041';
 save_nifti=1;
@@ -173,7 +173,7 @@ create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUN
 %% Myel_043
 patient='043';
 save_nifti=1;
-version_of_nnUNet='v_2_0';
+% version_of_nnUNet='v_2_0';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_044
 patient='044';
@@ -207,7 +207,7 @@ create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUN
 %% Myel_052
 patient='052';
 save_nifti=1;
-version_of_nnUNet='v_2_0';
+% version_of_nnUNet='v_2_0';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_053
 patient='053';
