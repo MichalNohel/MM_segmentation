@@ -4,8 +4,8 @@ Created on Tue Dec 19 12:53:43 2023
 
 @author: nohel
 """
-
-
+import sys
+sys.path.append('..\Functions')
 from Functions.nnU_Net_preprocesing_functions import maybe_mkdir_p,subfiles,reorient_all_images_in_folder_to_ras, generate_dataset_json
 from batchgenerators.utilities.file_and_folder_operations import *
 import shutil

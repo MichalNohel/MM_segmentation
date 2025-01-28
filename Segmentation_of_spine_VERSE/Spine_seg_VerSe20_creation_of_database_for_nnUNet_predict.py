@@ -12,7 +12,8 @@ Created on Tue Dec 19 12:53:43 2023
 @author: nohel
 """
 
-
+import sys
+sys.path.append('../Functions')
 from Functions.nnU_Net_preprocesing_functions import maybe_mkdir_p,subfiles,reorient_all_images_in_folder_to_ras, generate_dataset_json
 from batchgenerators.utilities.file_and_folder_operations import *
 import shutil
@@ -24,6 +25,9 @@ import nibabel as nib
 #%%
 
 if __name__ == "__main__":
+    
+    imagests = 'D:/BMD_analysis/DATA/BMD_conv'
+    reorient_all_images_in_folder_to_ras(imagests,1)
     
     ### 
     #base = 'E:/Znaceni_dat/Data/'
@@ -55,4 +59,6 @@ if __name__ == "__main__":
     
     
     #%%
+    
+    
     reorient_all_images_in_folder_to_ras(imagests,2)
