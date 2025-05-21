@@ -387,8 +387,8 @@ nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels
 
 #%% Myel_072 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
 pacient='072';
-path_to_database='E:\Znaceni_dat\Data_pom';
-version_of_nnUNet='v_1_0';
+path_to_database='E:\Znaceni_dat\Data';
+version_of_nnUNet='v_2_2_merge';
 version_of_SA='v_4_3';
 #%%
 Spine_mask_Spine_analyzer_final=loadmat( path_to_database + '\Myel_'+pacient+'\TMP/Spine_mask_Spine_analyzer_final.mat')
@@ -416,11 +416,15 @@ nib.save(TMP_seg_nn_unet_final, path_to_database + '\Myel_' + pacient +'\Spine_l
 
 
 #%% Vytvoření semantické segmentace lézí z nnUNetu
-leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_nnUNet_' + version_of_nnUNet + '_semantic.mat')
-leze_nnUNet=leze_nnUNet.get('L')
+import h5py
+#leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_nnUNet_' + version_of_nnUNet + '_semantic.mat')
+#leze_nnUNet=leze_nnUNet.get('L')
+with h5py.File(path_to_database + '/Myel_' + pacient + '/TMP/Myel_' + pacient + '_lesions_seg_nnUNet_' + version_of_nnUNet + '_semantic.mat', 'r') as file:
+    # Získání datového pole 'L'
+    leze_nnUNet = np.array(file['L'])  # Převedení na numpy pole
+    leze_nnUNet = np.transpose(leze_nnUNet, (2, 1, 0))
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
 nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_'+ version_of_nnUNet +'_semantic.nii.gz')
-
 
 
 

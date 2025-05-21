@@ -13,11 +13,12 @@ Created on Tue Dec 19 12:53:43 2023
 """
 
 import sys
-sys.path.append('../Functions')
+import os
+sys.path.append(('../'))
 from Functions.nnU_Net_preprocesing_functions import maybe_mkdir_p,subfiles,reorient_all_images_in_folder_to_ras, generate_dataset_json
 from batchgenerators.utilities.file_and_folder_operations import *
 import shutil
-import os
+
 join = os.path.join
 import nibabel as nib
 
@@ -26,12 +27,16 @@ import nibabel as nib
 
 if __name__ == "__main__":
     
-    imagests = 'D:/BMD_analysis/DATA/BMD_conv'
-    reorient_all_images_in_folder_to_ras(imagests,1)
+    #imagests = 'D:/BMD_analysis/DATA/BMD_conv'
+    #reorient_all_images_in_folder_to_ras(imagests,1)
+    #imagests = 'E:/nnUNet_v2_MAIN_FILE/nnUNet_raw/Dataset800_Spine_segmentation_VerSe20/imagesTs/Predikce_BMD_001_016'
+    #reorient_all_images_in_folder_to_ras(imagests,1)
     
     ### 
     #base = 'E:/Znaceni_dat/Data/'
-    base = 'E:/Znaceni_dat/Data_pom/'
+    #base = 'E:/Znaceni_dat/Data_pom/'
+    #base = 'D:\BMD_analysis\DATA/'
+    base = 'D:\BMD_analysis\DATA_kontrast/'
     
     task_id = 800
     task_name = "Spine_segmentation_VerSe20"
@@ -41,14 +46,15 @@ if __name__ == "__main__":
     maybe_mkdir_p(out_base)
     
     #imagests = join(out_base, "imagesTs/Predikce_myel_001_040")
-    imagests = join(out_base, "imagesTs/Predikce_myel_041_081")
+    imagests = join(out_base, "imagesTs/Predikce_BMD_contrast_001_016")
     
     maybe_mkdir_p(imagests)   
     train_patient_names = []
     num_training_cases = 0
     
     
-    for t in subdirs(base, join=False,prefix="Myel_"): 
+    #for t in subdirs(base, join=False,prefix="Myel_"): 
+    for t in subdirs(base, join=False,prefix="BMD_"): 
         #imagests - složka s testovacími daty  
         #konvenční CT
         train_patient_names=subfiles(join(base, t, 'ConvCT_data_nifti'), join=False, suffix=".nii.gz")[0]
@@ -61,4 +67,4 @@ if __name__ == "__main__":
     #%%
     
     
-    reorient_all_images_in_folder_to_ras(imagests,2)
+    reorient_all_images_in_folder_to_ras(imagests,1)

@@ -17,16 +17,17 @@ if __name__ == "__main__":
     
     ### 
     base = 'E:/Znaceni_dat/Data/'
-    task_id = 651
-    version_name = "_lesions_seg_nnUNet_v_2_1"
+    task_id = 652
+    version_name = "_lesions_seg_nnUNet_v_2_2"
     task_name = "MM" + version_name + "_VMI_40_validation_VV"
     
     foldername = "Dataset%03.0d_%s" % (task_id, task_name)    
     out_base = join('E://nnUNet_v2_MAIN_FILE/nnUNet_raw', foldername)  
     maybe_mkdir_p(out_base)
     
-    imagests = join(out_base, "imagesTs")
-    #imagests = join(out_base, "imagesTs",'Predikce_myel_041_060')
+    #imagests = join(out_base, "imagesTs")
+    #imagests = join(out_base, "imagesTs",'Predikce_myel_066_081')
+    imagests = join(out_base, "imagesTs",'Predikce_myel_nove_segmentace_nesegmentovanych')
     crop_parameters_folder = join(out_base, "crop_parameters/Prediction") 
      
     maybe_mkdir_p(imagests)   
@@ -38,7 +39,11 @@ if __name__ == "__main__":
     #subdirs(base, join=False,prefix="Myel_01")
     #train_pacients=['Myel_001', 'Myel_002', 'Myel_003', 'Myel_004', 'Myel_005', 'Myel_006', 'Myel_007', 'Myel_008', 'Myel_009', 'Myel_010','Myel_012','Myel_018','Myel_023','Myel_024','Myel_047','Myel_052','Myel_059','Myel_069','Myel_070']
     #predict_pacients=['Myel_012', 'Myel_018', 'Myel_023', 'Myel_024', 'Myel_043', 'Myel_047', 'Myel_052', 'Myel_059', 'Myel_069', 'Myel_070']
-    predict_pacients=['Myel_041', 'Myel_042', 'Myel_043','Myel_044','Myel_045','Myel_046','Myel_047', 'Myel_048','Myel_050','Myel_051','Myel_052','Myel_053','Myel_054','Myel_055','Myel_056','Myel_057','Myel_058','Myel_059','Myel_060']
+    #predict_pacients=['Myel_041', 'Myel_042', 'Myel_043','Myel_044','Myel_045','Myel_046','Myel_047', 'Myel_048','Myel_050','Myel_051','Myel_052','Myel_053','Myel_054','Myel_055','Myel_056','Myel_057','Myel_058','Myel_059','Myel_060']
+    #predict_pacients=['Myel_061', 'Myel_062', 'Myel_063', 'Myel_064', 'Myel_065']
+    #predict_pacients=['Myel_066', 'Myel_067', 'Myel_068', 'Myel_071', 'Myel_072','Myel_077', 'Myel_078', 'Myel_079', 'Myel_080', 'Myel_081']
+    predict_pacients=['Myel_017', 'Myel_022', 'Myel_025', 'Myel_043', 'Myel_044','Myel_053', 'Myel_061', 'Myel_062', 'Myel_063', 'Myel_064','Myel_065']
+    
     #for t in subdirs(base, join=False): 
     #predict_pacients = subdirs(base, join=False,prefix="Myel_")
     for t in predict_pacients: 

@@ -3,8 +3,7 @@ close all
 clc
 addpath Functions
 path_to_database='E:\Znaceni_dat\Data';
-version_of_nnUNet='v_2_1';
-
+version_of_nnUNet='v_2_2_merge';
 %% Myel_001
 patient='001';
 save_nifti=1;
@@ -69,6 +68,7 @@ create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUN
 %% Myel_017
 patient='017';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_018
 patient='018';
@@ -90,6 +90,7 @@ create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUN
 %% Myel_022 
 patient='022';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_023 
 patient='023';
@@ -104,6 +105,7 @@ create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUN
 %% Myel_025 
 patient='025';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_026 
 patient='026';
@@ -173,11 +175,12 @@ create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUN
 %% Myel_043
 patient='043';
 save_nifti=1;
-% version_of_nnUNet='v_2_0';
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_044
 patient='044';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_045
 patient='045';
@@ -212,6 +215,7 @@ create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUN
 %% Myel_053
 patient='053';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_054
 patient='054';
@@ -245,34 +249,42 @@ create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUN
 %% Myel_061
 patient='061';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_062
 patient='062';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_063
 patient='063';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_064
 patient='064';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_065
 patient='065';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_066
 patient='066';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_067
 patient='067';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_068
 patient='068';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_069
 patient='069';
@@ -287,30 +299,36 @@ create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUN
 %% Myel_071
 patient='071';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_072 problém převodu dicom2nifti - uložení mat file a přeuložení v pythonu. oprava masky nnUNet
 patient='072';
 save_nifti=0;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_077
 patient='077';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_078
 patient='078';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_079
 patient='079';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_080
 patient='080';
 save_nifti=1;
+version_of_nnUNet='v_2_2_merge';
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
 %% Myel_081
 patient='081';
 save_nifti=1;
 create_semantic_segmentation(path_to_database,patient,save_nifti,version_of_nnUNet)
-
+version_of_nnUNet='v_2_2_merge';
 

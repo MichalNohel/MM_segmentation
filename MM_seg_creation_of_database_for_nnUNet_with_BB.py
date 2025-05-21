@@ -19,8 +19,8 @@ if __name__ == "__main__":
         ### 
     base = 'E:/Znaceni_dat/Data/'
     
-    task_id = 651
-    version_name = "_lesions_seg_nnUNet_v_2_1"
+    task_id = 652
+    version_name = "_lesions_seg_nnUNet_v_2_2"
     task_name = "MM" + version_name + "_VMI_40_validation_VV"
     
     foldername = "Dataset%03.0d_%s" % (task_id, task_name)    
@@ -41,10 +41,16 @@ if __name__ == "__main__":
 
     ### Pouze convCT a maska obratlů
     #subdirs(base, join=False,prefix="Myel_01")
-    train_pacients=['Myel_001', 'Myel_002', 'Myel_003', 'Myel_004', 'Myel_005', 'Myel_006', 'Myel_007', 'Myel_008', 'Myel_009', 'Myel_010','Myel_012','Myel_018','Myel_023','Myel_024','Myel_047','Myel_052','Myel_059','Myel_069','Myel_070']
+    #train_pacients=['Myel_001', 'Myel_002', 'Myel_003', 'Myel_004', 'Myel_005', 'Myel_006', 'Myel_007', 'Myel_008', 'Myel_009', 'Myel_010','Myel_012','Myel_018','Myel_023','Myel_024','Myel_047','Myel_052','Myel_059','Myel_069','Myel_070']
     #train_pacients = ['Myel_059']
-    #for t in subdirs(base, join=False): 
-    for t in train_pacients: 
+    not_segmented_cases = []
+    for t in subdirs(base, join=False, prefix="Myel_"): 
+    #for t in train_pacients: 
+        
+        lesion_seg_name = subfiles(join(base, t, 'Lesion_labels'), join=False, suffix="validation_VV_final.nii.gz")    
+        if (len(lesion_seg_name)==0):
+            not_segmented_cases.append(t)
+            continue
         #imagestr - složka s trénovacími daty  
         
         #Vysegmentovaná páteř a detekce BB      
@@ -59,8 +65,8 @@ if __name__ == "__main__":
         min_coords, max_coords = get_3d_bounding_box(nii_img)  # nalezeni BB pro 3D
         
         # cut myel_059
-        if t=='Myel_059':
-            max_coords[2]=700
+        #if t=='Myel_059':
+        #    max_coords[2]=700
         
         
         #
@@ -175,6 +181,7 @@ if __name__ == "__main__":
     
     
     #%%
+    print(not_segmented_cases)
     generate_dataset_json(output_folder=out_base,
                           #channel_names={0: "CaSupp_25",1: "mask_spine", },
                           channel_names={0: "VMI_40",1: "mask_spine", },
