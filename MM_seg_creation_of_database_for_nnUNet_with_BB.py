@@ -64,12 +64,6 @@ if __name__ == "__main__":
         
         min_coords, max_coords = get_3d_bounding_box(nii_img)  # nalezeni BB pro 3D
         
-        # cut myel_059
-        #if t=='Myel_059':
-        #    max_coords[2]=700
-        
-        
-        #
         orig_size=nii_img.shape
         
         coordinates={'orig_size': orig_size, 'min_coords': min_coords,'max_coords': max_coords}   # uložení JSON souboru

@@ -39,10 +39,14 @@ if __name__ == "__main__":
     # task_id = 706
     # version_name = "_CaSupp_75"
     
-    task_id = 707
-    version_name = "_CaSupp_100"
+    # task_id = 707
+    # version_name = "_CaSupp_100"
+    # task_name = "MM_Lesion_seg_Leave_One_Out_without" + version_name   
     
-    task_name = "MM_Lesion_seg_Leave_One_Out_without" + version_name     
+    task_id = 708
+    version_name = "_all_together"
+    
+    task_name = "MM_Lesion_seg" + version_name     
     foldername = "Dataset%03.0d_%s" % (task_id, task_name)    
     out_base = join('E://nnUNet_v2_MAIN_FILE/nnUNet_raw', foldername)  
     maybe_mkdir_p(out_base)
@@ -333,7 +337,25 @@ if __name__ == "__main__":
     #                       labels={"background": 0,"Lesions": 1,},
     #                       file_ending=".nii.gz",
     #                       num_training_cases=num_training_cases,)
+    
         # %% Dataset707_MM_Lesion_seg_Leave_One_Out_without_CaSupp_100    
+    #     nib.save(aux_var_ConvCT, join(imagestr, t + "_0000.nii.gz")) 
+    #     nib.save(aux_var_vmi_40kev, join(imagestr, t + "_0001.nii.gz")) 
+    #     nib.save(aux_var_vmi_80kev, join(imagestr, t + "_0002.nii.gz")) 
+    #     nib.save(aux_var_vmi_120kev, join(imagestr, t + "_0003.nii.gz"))
+    #     nib.save(aux_var_CaSupp_25, join(imagestr, t + "_0004.nii.gz")) 
+    #     nib.save(aux_var_CaSupp_50, join(imagestr, t + "_0005.nii.gz")) 
+    #     nib.save(aux_var_CaSupp_75, join(imagestr, t + "_0006.nii.gz")) 
+    #     nib.save(aux_var_spine_seg_nn_unet, join(imagestr, t + "_0007.nii.gz"))  # Spine segmentation
+         
+    # generate_dataset_json(output_folder=out_base,
+    #                       name = task_name,
+    #                       channel_names={0: "ConvCT",1: "VMI_40",2: "VMI_80",3: "VMI_120",4: "CaSupp_25",5: "CaSupp_50",6: "CaSupp_75",7: "mask_spine", },
+    #                       labels={"background": 0,"Lesions": 1,},
+    #                       file_ending=".nii.gz",
+    #                       num_training_cases=num_training_cases,)
+    
+        # %% Dataset708_MM_Lesion_seg_all_together   
         nib.save(aux_var_ConvCT, join(imagestr, t + "_0000.nii.gz")) 
         nib.save(aux_var_vmi_40kev, join(imagestr, t + "_0001.nii.gz")) 
         nib.save(aux_var_vmi_80kev, join(imagestr, t + "_0002.nii.gz")) 
@@ -341,14 +363,17 @@ if __name__ == "__main__":
         nib.save(aux_var_CaSupp_25, join(imagestr, t + "_0004.nii.gz")) 
         nib.save(aux_var_CaSupp_50, join(imagestr, t + "_0005.nii.gz")) 
         nib.save(aux_var_CaSupp_75, join(imagestr, t + "_0006.nii.gz")) 
-        nib.save(aux_var_spine_seg_nn_unet, join(imagestr, t + "_0007.nii.gz"))  # Spine segmentation
+        nib.save(aux_var_CaSupp_100, join(imagestr, t + "_0007.nii.gz")) 
+        nib.save(aux_var_spine_seg_nn_unet, join(imagestr, t + "_0008.nii.gz"))  # Spine segmentation
          
     generate_dataset_json(output_folder=out_base,
                           name = task_name,
-                          channel_names={0: "ConvCT",1: "VMI_40",2: "VMI_80",3: "VMI_120",4: "CaSupp_25",5: "CaSupp_50",6: "CaSupp_75",7: "mask_spine", },
+                          channel_names={0: "ConvCT",1: "VMI_40",2: "VMI_80",3: "VMI_120",4: "CaSupp_25",5: "CaSupp_50",6: "CaSupp_75",7: "CaSupp_100",8: "mask_spine", },
                           labels={"background": 0,"Lesions": 1,},
                           file_ending=".nii.gz",
                           num_training_cases=num_training_cases,)
+    
+
     
     
     
