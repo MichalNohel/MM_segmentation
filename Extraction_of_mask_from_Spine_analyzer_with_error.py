@@ -40,19 +40,19 @@ nib.save(TMP_seg_nn_unet_final, path_to_database + '\Myel_' + pacient +'\Spine_l
 
 #%% Vytvoření semantické segmentace lézí z nnUNetu
 leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_nnUNet_' + version_of_nnUNet + '_semantic.mat')
-leze_nnUNet=leze_nnUNet.get('L')
+leze_nnUNet = leze_nnUNet.get('L')
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
 nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_'+ version_of_nnUNet +'_semantic.nii.gz')
 #%% Vytvoření semantické segmentace lézí z validace MN
 leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_MITK_val_MN_cor_final_semantic.mat')
-leze_nnUNet=leze_nnUNet.get('L')
+leze_nnUNet = leze_nnUNet.get('L')
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
 nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_MITK_val_MN_cor_final_semantic.nii.gz')
 
 #%% Vytvoření semantické segmentace lézí od Ati pro TCIA
 img = nib.load(path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final.nii.gz')
 leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.mat')
-leze_nnUNet=leze_nnUNet.get('L')
+leze_nnUNet = leze_nnUNet.get('L')
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
 nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.nii.gz')
 
@@ -152,6 +152,14 @@ leze_nnUNet=leze_nnUNet.get('L')
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
 nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_'+ version_of_nnUNet +'_semantic.nii.gz')
 
+#%% Vytvoření semantické segmentace lézí od Ati pro TCIA
+img = nib.load(path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final.nii.gz')
+leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.mat')
+leze_nnUNet=leze_nnUNet.get('L')
+pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
+nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.nii.gz')
+
+
 
 
 #%% Myel_024 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
@@ -188,6 +196,15 @@ leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient
 leze_nnUNet=leze_nnUNet.get('L')
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
 nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_'+ version_of_nnUNet +'_semantic.nii.gz')
+
+#%% Vytvoření semantické segmentace lézí od Ati pro TCIA
+img = nib.load(path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final.nii.gz')
+leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.mat')
+leze_nnUNet=leze_nnUNet.get('L')
+pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
+nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.nii.gz')
+
+
 
 
 
@@ -228,6 +245,17 @@ leze_nnUNet=leze_nnUNet.get('L')
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
 nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_'+ version_of_nnUNet +'_semantic.nii.gz')
 
+#%% Vytvoření semantické segmentace lézí od Ati pro TCIA
+img = nib.load(path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final.nii.gz')
+leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.mat')
+leze_nnUNet=leze_nnUNet.get('L')
+pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
+nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.nii.gz')
+
+
+
+
+
 
 #%% Myel_031 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
 pacient='031';
@@ -266,6 +294,17 @@ leze_nnUNet=leze_nnUNet.get('L')
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
 nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_'+ version_of_nnUNet +'_semantic.nii.gz')
 
+#%% Vytvoření semantické segmentace lézí od Ati pro TCIA
+img = nib.load(path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final.nii.gz')
+leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.mat')
+leze_nnUNet=leze_nnUNet.get('L')
+pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
+nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.nii.gz')
+
+
+
+
+
 
 #%% Myel_042 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
 pacient='042';
@@ -296,12 +335,20 @@ nib.save(TMP_Lesion_mask_Spine_analyzer_final, path_to_database + '\Myel_' + pac
 TMP_seg_nn_unet_final = nib.Nifti1Image(seg_nn_unet_final, img.affine, img.header)
 nib.save(TMP_seg_nn_unet_final, path_to_database + '\Myel_' + pacient +'\Spine_labels/NN_Unet/myel_' + pacient +'_spine_seg_nnUNet.nii.gz')
 
-
 #%% Vytvoření semantické segmentace lézí z nnUNetu
 leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_nnUNet_' + version_of_nnUNet + '_semantic.mat')
 leze_nnUNet=leze_nnUNet.get('L')
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
 nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_'+ version_of_nnUNet +'_semantic.nii.gz')
+
+#%% Vytvoření semantické segmentace lézí od Ati pro TCIA
+img = nib.load(path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final.nii.gz')
+leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.mat')
+leze_nnUNet=leze_nnUNet.get('L')
+pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
+nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.nii.gz')
+
+
 
 
 
@@ -340,6 +387,16 @@ leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient
 leze_nnUNet=leze_nnUNet.get('L')
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
 nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_'+ version_of_nnUNet +'_semantic.nii.gz')
+
+#%% Vytvoření semantické segmentace lézí od Ati pro TCIA
+img = nib.load(path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final.nii.gz')
+leze_nnUNet = loadmat(path_to_database + '\Myel_'+pacient+'\TMP\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.mat')
+leze_nnUNet=leze_nnUNet.get('L')
+pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
+nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.nii.gz')
+
+
+
 
 
 
@@ -384,6 +441,20 @@ with h5py.File(path_to_database + '/Myel_' + pacient + '/TMP/Myel_' + pacient + 
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
 nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_'+ version_of_nnUNet +'_semantic.nii.gz')
 
+#%% Vytvoření semantické segmentace lézí od Ati pro TCIA
+import h5py
+img = nib.load(path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final.nii.gz')
+with h5py.File(path_to_database + '/Myel_' + pacient + '/TMP/Myel_' + pacient + '_lesions_seg_validation_VV_final_semantic.mat', 'r') as file:
+    # Získání datového pole 'L'
+    leze_nnUNet = np.array(file['L'])  # Převedení na numpy pole
+    leze_nnUNet = np.transpose(leze_nnUNet, (2, 1, 0))
+pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
+nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.nii.gz')
+
+
+
+
+
 
 #%% Myel_072 - problém převodu dicom2nifit - bylo potřeba upravit dicom info
 pacient='072';
@@ -425,6 +496,17 @@ with h5py.File(path_to_database + '/Myel_' + pacient + '/TMP/Myel_' + pacient + 
     leze_nnUNet = np.transpose(leze_nnUNet, (2, 1, 0))
 pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
 nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_nnUNet_'+ version_of_nnUNet +'_semantic.nii.gz')
+
+#%% Vytvoření semantické segmentace lézí od Ati pro TCIA
+import h5py
+img = nib.load(path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final.nii.gz')
+with h5py.File(path_to_database + '/Myel_' + pacient + '/TMP/Myel_' + pacient + '_lesions_seg_validation_VV_final_semantic.mat', 'r') as file:
+    # Získání datového pole 'L'
+    leze_nnUNet = np.array(file['L'])  # Převedení na numpy pole
+    leze_nnUNet = np.transpose(leze_nnUNet, (2, 1, 0))
+pom_leze_nnUNet = nib.Nifti1Image(leze_nnUNet, img.affine, img.header)
+nib.save(pom_leze_nnUNet, path_to_database + '\Myel_' + pacient +'\Lesion_labels\Myel_' + pacient +'_lesions_seg_validation_VV_final_semantic.nii.gz')
+
 
 
 
