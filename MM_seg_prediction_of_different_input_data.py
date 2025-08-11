@@ -13,11 +13,16 @@ import shutil
 import numpy as np 
 
 if __name__ == "__main__":
-        ### 
-    base = 'E:/Znaceni_dat/Data/'
-    
+    base = 'E:/Znaceni_dat/Data/'    
     task_id = 708
-    version_name = "_all_together_zero_input_channel_convCT"
+    # version_name = "_all_together_zero_input_channel_convCT"
+    # version_name = "_all_together_zero_input_channel_VMI40"
+    # version_name = "_all_together_zero_input_channel_VMI80"
+    # version_name = "_all_together_zero_input_channel_VMI120"
+    # version_name = "_all_together_zero_input_channel_CaSupp_25"
+    version_name = "_all_together_zero_input_channel_CaSupp_50"
+    # version_name = "_all_together_zero_input_channel_CaSupp_75"
+    # version_name = "_all_together_zero_input_channel_CaSupp_100
     
     
     
@@ -26,12 +31,9 @@ if __name__ == "__main__":
     out_base = join('E://nnUNet_v2_MAIN_FILE/nnUNet_raw/MM_Data_for_input_analysis', foldername)  
     maybe_mkdir_p(out_base)
     
-    
-    
     json_path = 'E:/Znaceni_dat/splits_final.json'
     with open(json_path, 'r') as f:
-        folds = json.load(f)
-        
+        folds = json.load(f)        
     
     for i, fold in enumerate(folds):
         fold_dir = os.path.join(out_base, f'fold_{i}')
@@ -39,12 +41,10 @@ if __name__ == "__main__":
         
         imagests = join(fold_dir, "imagesTs")
         labelsts = join(fold_dir, "labelsTs")      
-        crop_parameters_folder = join(fold_dir, "crop_parameters") 
-        
+        crop_parameters_folder = join(fold_dir, "crop_parameters")         
         maybe_mkdir_p(imagests)
         maybe_mkdir_p(labelsts)    
-        maybe_mkdir_p(crop_parameters_folder) 
-        
+        maybe_mkdir_p(crop_parameters_folder)         
         num_training_cases = 0
         
         # Kopírování pouze validačních pacientů
@@ -70,8 +70,7 @@ if __name__ == "__main__":
             
             coordinates={'orig_size': orig_size, 'min_coords': min_coords,'max_coords': max_coords}   # uložení JSON souboru
             with open(join(crop_parameters_folder, t + ".json"), "w") as f:
-                json.dump(coordinates, f, cls=NumpyArrayEncoder)
-                
+                json.dump(coordinates, f, cls=NumpyArrayEncoder)                
                 
             # creation of crop spine seg mask
             cut_nii_img = nii_img[min_coords[0]:max_coords[0]+1,
@@ -202,27 +201,179 @@ if __name__ == "__main__":
             #%% saving of input data          
             
             # %% Dataset708_MM_Lesion_seg_all_together_zero_input_channel_convCT 
-            aux_nii_img=aux_var_ConvCT.get_fdata()
+        #     aux_nii_img=aux_var_ConvCT.get_fdata()
+        #     zero_matrix = np.zeros_like(aux_nii_img)
+        #     aux_var_zeros = nib.Nifti1Image(zero_matrix, nifti_info_for_all.affine, nifti_info_for_all.header)
+            
+        #     nib.save(aux_var_zeros, join(imagests, t + "_0000.nii.gz")) 
+        #     nib.save(aux_var_vmi_40kev, join(imagests, t + "_0001.nii.gz")) 
+        #     nib.save(aux_var_vmi_80kev, join(imagests, t + "_0002.nii.gz")) 
+        #     nib.save(aux_var_vmi_120kev, join(imagests, t + "_0003.nii.gz"))
+        #     nib.save(aux_var_CaSupp_25, join(imagests, t + "_0004.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_50, join(imagests, t + "_0005.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_75, join(imagests, t + "_0006.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_100, join(imagests, t + "_0007.nii.gz")) 
+        #     nib.save(aux_var_spine_seg_nn_unet, join(imagests, t + "_0008.nii.gz"))  # Spine segmentation
+             
+        # generate_dataset_json(output_folder=fold_dir,
+        #                       name = task_name,
+        #                       channel_names={0: "aux_var_zeros",1: "VMI_40",2: "VMI_80",3: "VMI_120",4: "CaSupp_25",5: "CaSupp_50",6: "CaSupp_75",7: "CaSupp_100",8: "mask_spine", },
+        #                       labels={"background": 0,"Lesions": 1,},
+        #                       file_ending=".nii.gz",
+        #                       num_training_cases=num_training_cases,)
+        
+            # %% Dataset708_MM_Lesion_seg_all_together_zero_input_channel_VMI40 
+        #     aux_nii_img=aux_var_vmi_40kev.get_fdata()
+        #     zero_matrix = np.zeros_like(aux_nii_img)
+        #     aux_var_zeros = nib.Nifti1Image(zero_matrix, nifti_info_for_all.affine, nifti_info_for_all.header)
+            
+        #     nib.save(aux_var_ConvCT, join(imagests, t + "_0000.nii.gz")) 
+        #     nib.save(aux_var_zeros, join(imagests, t + "_0001.nii.gz")) 
+        #     nib.save(aux_var_vmi_80kev, join(imagests, t + "_0002.nii.gz")) 
+        #     nib.save(aux_var_vmi_120kev, join(imagests, t + "_0003.nii.gz"))
+        #     nib.save(aux_var_CaSupp_25, join(imagests, t + "_0004.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_50, join(imagests, t + "_0005.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_75, join(imagests, t + "_0006.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_100, join(imagests, t + "_0007.nii.gz")) 
+        #     nib.save(aux_var_spine_seg_nn_unet, join(imagests, t + "_0008.nii.gz"))  # Spine segmentation
+             
+        # generate_dataset_json(output_folder=fold_dir,
+        #                       name = task_name,
+        #                       channel_names={0: "ConvCT",1: "aux_var_zeros",2: "VMI_80",3: "VMI_120",4: "CaSupp_25",5: "CaSupp_50",6: "CaSupp_75",7: "CaSupp_100",8: "mask_spine", },
+        #                       labels={"background": 0,"Lesions": 1,},
+        #                       file_ending=".nii.gz",
+        #                       num_training_cases=num_training_cases,)
+    
+            # %% Dataset708_MM_Lesion_seg_all_together_zero_input_channel_VMI80
+        #     aux_nii_img=aux_var_vmi_80kev.get_fdata()
+        #     zero_matrix = np.zeros_like(aux_nii_img)
+        #     aux_var_zeros = nib.Nifti1Image(zero_matrix, nifti_info_for_all.affine, nifti_info_for_all.header)
+            
+        #     nib.save(aux_var_ConvCT, join(imagests, t + "_0000.nii.gz")) 
+        #     nib.save(aux_var_vmi_40kev, join(imagests, t + "_0001.nii.gz")) 
+        #     nib.save(aux_var_zeros, join(imagests, t + "_0002.nii.gz")) 
+        #     nib.save(aux_var_vmi_120kev, join(imagests, t + "_0003.nii.gz"))
+        #     nib.save(aux_var_CaSupp_25, join(imagests, t + "_0004.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_50, join(imagests, t + "_0005.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_75, join(imagests, t + "_0006.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_100, join(imagests, t + "_0007.nii.gz")) 
+        #     nib.save(aux_var_spine_seg_nn_unet, join(imagests, t + "_0008.nii.gz"))  # Spine segmentation
+             
+        # generate_dataset_json(output_folder=fold_dir,
+        #                       name = task_name,
+        #                       channel_names={0: "ConvCT",1: "VMI_40",2: "aux_var_zeros",3: "VMI_120",4: "CaSupp_25",5: "CaSupp_50",6: "CaSupp_75",7: "CaSupp_100",8: "mask_spine", },
+        #                       labels={"background": 0,"Lesions": 1,},
+        #                       file_ending=".nii.gz",
+        #                       num_training_cases=num_training_cases,)
+            
+            # %% Dataset708_MM_Lesion_seg_all_together_zero_input_channel_VMI120
+        #     aux_nii_img=aux_var_vmi_120kev.get_fdata()
+        #     zero_matrix = np.zeros_like(aux_nii_img)
+        #     aux_var_zeros = nib.Nifti1Image(zero_matrix, nifti_info_for_all.affine, nifti_info_for_all.header)
+            
+        #     nib.save(aux_var_ConvCT, join(imagests, t + "_0000.nii.gz")) 
+        #     nib.save(aux_var_vmi_40kev, join(imagests, t + "_0001.nii.gz")) 
+        #     nib.save(aux_var_vmi_80kev, join(imagests, t + "_0002.nii.gz")) 
+        #     nib.save(aux_var_zeros, join(imagests, t + "_0003.nii.gz"))
+        #     nib.save(aux_var_CaSupp_25, join(imagests, t + "_0004.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_50, join(imagests, t + "_0005.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_75, join(imagests, t + "_0006.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_100, join(imagests, t + "_0007.nii.gz")) 
+        #     nib.save(aux_var_spine_seg_nn_unet, join(imagests, t + "_0008.nii.gz"))  # Spine segmentation
+             
+        # generate_dataset_json(output_folder=fold_dir,
+        #                       name = task_name,
+        #                       channel_names={0: "ConvCT",1: "VMI_40",2: "VMI_80",3: "aux_var_zeros",4: "CaSupp_25",5: "CaSupp_50",6: "CaSupp_75",7: "CaSupp_100",8: "mask_spine", },
+        #                       labels={"background": 0,"Lesions": 1,},
+        #                       file_ending=".nii.gz",
+        #                       num_training_cases=num_training_cases,)
+    
+            # %% Dataset708_MM_Lesion_seg_all_together_zero_input_channel_CaSupp_25
+        #     aux_nii_img=aux_var_CaSupp_25.get_fdata()
+        #     zero_matrix = np.zeros_like(aux_nii_img)
+        #     aux_var_zeros = nib.Nifti1Image(zero_matrix, nifti_info_for_all.affine, nifti_info_for_all.header)
+            
+        #     nib.save(aux_var_ConvCT, join(imagests, t + "_0000.nii.gz")) 
+        #     nib.save(aux_var_vmi_40kev, join(imagests, t + "_0001.nii.gz")) 
+        #     nib.save(aux_var_vmi_80kev, join(imagests, t + "_0002.nii.gz")) 
+        #     nib.save(aux_var_vmi_120kev, join(imagests, t + "_0003.nii.gz"))
+        #     nib.save(aux_var_zeros, join(imagests, t + "_0004.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_50, join(imagests, t + "_0005.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_75, join(imagests, t + "_0006.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_100, join(imagests, t + "_0007.nii.gz")) 
+        #     nib.save(aux_var_spine_seg_nn_unet, join(imagests, t + "_0008.nii.gz"))  # Spine segmentation
+             
+        # generate_dataset_json(output_folder=fold_dir,
+        #                       name = task_name,
+        #                       channel_names={0: "ConvCT",1: "VMI_40",2: "VMI_80",3: "VMI_120",4: "aux_var_zeros",5: "CaSupp_50",6: "CaSupp_75",7: "CaSupp_100",8: "mask_spine", },
+        #                       labels={"background": 0,"Lesions": 1,},
+        #                       file_ending=".nii.gz",
+        #                       num_training_cases=num_training_cases,)
+        
+            # %% Dataset708_MM_Lesion_seg_all_together_zero_input_channel_CaSupp_50
+            aux_nii_img=aux_var_CaSupp_50.get_fdata()
             zero_matrix = np.zeros_like(aux_nii_img)
             aux_var_zeros = nib.Nifti1Image(zero_matrix, nifti_info_for_all.affine, nifti_info_for_all.header)
             
-            nib.save(aux_var_zeros, join(imagests, t + "_0000.nii.gz")) 
+            nib.save(aux_var_ConvCT, join(imagests, t + "_0000.nii.gz")) 
             nib.save(aux_var_vmi_40kev, join(imagests, t + "_0001.nii.gz")) 
             nib.save(aux_var_vmi_80kev, join(imagests, t + "_0002.nii.gz")) 
             nib.save(aux_var_vmi_120kev, join(imagests, t + "_0003.nii.gz"))
             nib.save(aux_var_CaSupp_25, join(imagests, t + "_0004.nii.gz")) 
-            nib.save(aux_var_CaSupp_50, join(imagests, t + "_0005.nii.gz")) 
+            nib.save(aux_var_zeros, join(imagests, t + "_0005.nii.gz")) 
             nib.save(aux_var_CaSupp_75, join(imagests, t + "_0006.nii.gz")) 
             nib.save(aux_var_CaSupp_100, join(imagests, t + "_0007.nii.gz")) 
             nib.save(aux_var_spine_seg_nn_unet, join(imagests, t + "_0008.nii.gz"))  # Spine segmentation
              
         generate_dataset_json(output_folder=fold_dir,
                               name = task_name,
-                              channel_names={0: "aux_var_zeros",1: "VMI_80",2: "VMI_120",3: "CaSupp_25",4: "CaSupp_50",5: "CaSupp_75",6: "CaSupp_100",7: "mask_spine", },
+                              channel_names={0: "ConvCT",1: "VMI_40",2: "VMI_80",3: "VMI_120",4: "CaSupp_25",5: "aux_var_zeros",6: "CaSupp_75",7: "CaSupp_100",8: "mask_spine", },
                               labels={"background": 0,"Lesions": 1,},
                               file_ending=".nii.gz",
                               num_training_cases=num_training_cases,)
-    
-
-    
-    
+        
+        
+        
+            # %% Dataset708_MM_Lesion_seg_all_together_zero_input_channel_CaSupp_75
+        #     aux_nii_img=aux_var_CaSupp_75.get_fdata()
+        #     zero_matrix = np.zeros_like(aux_nii_img)
+        #     aux_var_zeros = nib.Nifti1Image(zero_matrix, nifti_info_for_all.affine, nifti_info_for_all.header)
+            
+        #     nib.save(aux_var_ConvCT, join(imagests, t + "_0000.nii.gz")) 
+        #     nib.save(aux_var_vmi_40kev, join(imagests, t + "_0001.nii.gz")) 
+        #     nib.save(aux_var_vmi_80kev, join(imagests, t + "_0002.nii.gz")) 
+        #     nib.save(aux_var_vmi_120kev, join(imagests, t + "_0003.nii.gz"))
+        #     nib.save(aux_var_CaSupp_25, join(imagests, t + "_0004.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_50, join(imagests, t + "_0005.nii.gz")) 
+        #     nib.save(aux_var_zeros, join(imagests, t + "_0006.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_100, join(imagests, t + "_0007.nii.gz")) 
+        #     nib.save(aux_var_spine_seg_nn_unet, join(imagests, t + "_0008.nii.gz"))  # Spine segmentation
+             
+        # generate_dataset_json(output_folder=fold_dir,
+        #                       name = task_name,
+        #                       channel_names={0: "ConvCT",1: "VMI_40",2: "VMI_80",3: "VMI_120",4: "CaSupp_25",5: "CaSupp_50",6: "aux_var_zeros",7: "CaSupp_100",8: "mask_spine", },
+        #                       labels={"background": 0,"Lesions": 1,},
+        #                       file_ending=".nii.gz",
+        #                       num_training_cases=num_training_cases,)
+        
+            # %% Dataset708_MM_Lesion_seg_all_together_zero_input_channel_CaSupp_100
+        #     aux_nii_img=aux_var_CaSupp_100.get_fdata()
+        #     zero_matrix = np.zeros_like(aux_nii_img)
+        #     aux_var_zeros = nib.Nifti1Image(zero_matrix, nifti_info_for_all.affine, nifti_info_for_all.header)
+            
+        #     nib.save(aux_var_ConvCT, join(imagests, t + "_0000.nii.gz")) 
+        #     nib.save(aux_var_vmi_40kev, join(imagests, t + "_0001.nii.gz")) 
+        #     nib.save(aux_var_vmi_80kev, join(imagests, t + "_0002.nii.gz")) 
+        #     nib.save(aux_var_vmi_120kev, join(imagests, t + "_0003.nii.gz"))
+        #     nib.save(aux_var_CaSupp_25, join(imagests, t + "_0004.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_50, join(imagests, t + "_0005.nii.gz")) 
+        #     nib.save(aux_var_CaSupp_75, join(imagests, t + "_0006.nii.gz")) 
+        #     nib.save(aux_var_zeros, join(imagests, t + "_0007.nii.gz")) 
+        #     nib.save(aux_var_spine_seg_nn_unet, join(imagests, t + "_0008.nii.gz"))  # Spine segmentation
+             
+        # generate_dataset_json(output_folder=fold_dir,
+        #                       name = task_name,
+        #                       channel_names={0: "ConvCT",1: "VMI_40",2: "VMI_80",3: "VMI_120",4: "CaSupp_25",5: "CaSupp_50",6: "CaSupp_75",7: "aux_var_zeros",8: "mask_spine", },
+        #                       labels={"background": 0,"Lesions": 1,},
+        #                       file_ending=".nii.gz",
+        #                       num_training_cases=num_training_cases,)
