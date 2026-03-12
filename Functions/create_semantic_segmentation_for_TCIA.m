@@ -8,11 +8,12 @@ path_to_lesions=[path_to_database '\Myel_' patient '\Lesion_labels\Myel_' patien
 
 seg_lesions=niftiread(path_to_lesions);
 L = bwlabeln(seg_lesions);
+L = uint16(L);
 % imfuse5(data, L)
 info=niftiinfo(path_to_lesions);
 info.Datatype = 'double';
 if (save_nifti==1)
     niftiwrite(L,[path_to_database '\Myel_' patient '\Lesion_labels\Myel_' patient '_lesions_seg_validation_VV_final_semantic'],info,Compressed=true);
 else
-    save([path_to_database '\Myel_' patient '\TMP\Myel_' patient '_lesions_seg_validation_VV_final_semantic.mat'],'L')
+    save([path_to_database '\Myel_' patient '\TMP\Myel_' patient '_lesions_seg_validation_VV_final_semantic.mat'],'L','-v7.3')
 end

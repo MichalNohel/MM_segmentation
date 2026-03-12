@@ -16,6 +16,7 @@ if __name__ == "__main__":
     
     base = 'E:/Znaceni_dat/Data/'
     out_base = 'E:/Znaceni_dat/Data_pom'   
+    
    
     train_pacients=subdirs(base, join=False,prefix="Myel_")
     
@@ -26,7 +27,7 @@ if __name__ == "__main__":
         
         if os.path.isdir(out_base_cur):
             continue
-        
+          
         maybe_mkdir_p(out_base_cur)
         source_folder = join(base, t, 'ConvCT_data_dicom')
         
