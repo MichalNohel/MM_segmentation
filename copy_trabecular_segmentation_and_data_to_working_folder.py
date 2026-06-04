@@ -23,20 +23,24 @@ if __name__ == "__main__":
     
     
     for t in train_pacients: 
-        maybe_mkdir_p(join(out_base,t))                
-        #VMI 40keV
-        vmi_40kev=subfiles(join(base, t, 'VMI'), join=False, suffix="40kev.nii.gz")[0] 
-        curr = join(base, t, 'VMI')
-        image_file = join(curr, vmi_40kev)
-        shutil.copy(image_file, join(out_base,t,vmi_40kev))
-        
-        #Segmented spine   
-        
-        if t.startswith('Myel'):        
-            train_spine_segm = subfiles(join(base, t, 'Spine_labels/NN_Unet'), join=False, suffix="spine_seg_nnUNet_cor.nii.gz")[0]    
-            curr = join(base, t, 'Spine_labels/NN_Unet')        
+        if t.startswith('Myel'):  
+            
+            if (t == "Myel_017"):
+                continue
+            
+            maybe_mkdir_p(join(out_base,t))                
+            #VMI 40keV
+            vmi_40kev=subfiles(join(base, t, 'VMI'), join=False, suffix="40kev.nii.gz")[0] 
+            curr = join(base, t, 'VMI')
+            image_file = join(curr, vmi_40kev)
+            shutil.copy(image_file, join(out_base,t,vmi_40kev))
+            
+            #Segmented spine 
+            train_spine_segm = subfiles(join(base, t, 'Spine_labels/Trabecular_masks'), join=False, suffix="trabecular_seg_nnUNet_v_1_0.nii.gz")[0]    
+            curr = join(base, t, 'Spine_labels/Trabecular_masks')        
             image_file = join(curr, train_spine_segm)
-            shutil.copy(image_file, join(out_base,t,train_spine_segm[:-18] + '.nii.gz'))
+            shutil.copy(image_file, join(out_base,t, t + '_trabecular_spine_segmentation_nnUNet_v_1_0.nii.gz'))
+            shutil.copy(image_file, join(out_base,t, t + '_trabecular_spine_segmentation_nnUNet_v_1_0_cor.nii.gz'))
 
     
     
